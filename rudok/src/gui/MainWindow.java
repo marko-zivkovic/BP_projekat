@@ -40,13 +40,21 @@ public class MainWindow extends JFrame {
         JMenuItem novi = new JMenuItem("new");
         jMenuBar.add(file);
         jMenuBar.add(help);
-        file.add(novi);
+//        file.add(novi);
+        file.add(actionManager.getNewAction());
+        file.add(actionManager.getInfoAction());
         help.add(edit);
         this.setJMenuBar(jMenuBar);
 
         JToolBar jToolBar = new JToolBar();
         jToolBar.add(actionManager.getNewAction());
+        jToolBar.add(actionManager.getInfoAction());
         this.getContentPane().add(jToolBar,BorderLayout.NORTH);
+
+        JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(), new RadnaPovrsinaPanel());
+        this.getContentPane().add(jSplitPane,BorderLayout.CENTER);
+        jSplitPane.setDividerLocation(350);
+
 
 
     }
