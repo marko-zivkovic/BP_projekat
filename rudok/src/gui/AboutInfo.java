@@ -13,9 +13,8 @@ public class AboutInfo extends JFrame {
 
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenD = tk.getScreenSize();
-        int visina = screenD.height;
-        int sirina = screenD.width;
-        setSize(sirina/3,visina/3);
+        
+        setSize(550,550);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
         setVisible(true);
