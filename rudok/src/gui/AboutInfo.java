@@ -11,9 +11,6 @@ public class AboutInfo extends JFrame {
         ImageIcon slika = new ImageIcon(getClass().getResource("profil.jpg"));
         JLabel jslika = new JLabel(slika);
 
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension screenD = tk.getScreenSize();
-        
         setSize(550,550);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
