@@ -16,7 +16,7 @@ public class Projekat implements TreeNode{
 
     public void addPrezentacija(Prezentacija prezentacija){
         prezentacije.add(prezentacija);
-        prezentacija.setName( this.name+" - Diagram  - Grafički editor: "+String.valueOf(prezentacije.size()));
+        prezentacija.setName( this.name+" - Prezentacija  - Grafički editor: "+String.valueOf(prezentacije.size()));
 
     }
 
@@ -27,8 +27,8 @@ public class Projekat implements TreeNode{
         return prezentacije.get(index);
     }
 
-    public int getPrezentacijaIndex(Slajd slajd) {
-        return prezentacije.indexOf(slajd);
+    public int getPrezentacijaIndex(Prezentacija prezentacija) {
+        return prezentacije.indexOf(prezentacija);
     }
 
     public int getPrezentacijaCount() {
@@ -60,7 +60,7 @@ public class Projekat implements TreeNode{
 
 
     public int getIndex(TreeNode arg0) {
-        return getPrezentacijaIndex((Slajd)arg0);
+        return getPrezentacijaIndex((Prezentacija)arg0);
     }
 
 

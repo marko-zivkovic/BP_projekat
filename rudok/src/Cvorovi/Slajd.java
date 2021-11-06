@@ -5,6 +5,7 @@ import java.util.Enumeration;
 
 public class Slajd implements TreeNode {
     private String name;
+    private Integer br;
 
 
 
@@ -54,4 +55,11 @@ public class Slajd implements TreeNode {
         return null;
     }
 
+    public Integer getBr() {
+        return br;
+    }
+
+    public void setBr(Integer br) {
+        this.br = br;
+    }
 }

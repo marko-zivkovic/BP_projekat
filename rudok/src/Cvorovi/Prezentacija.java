@@ -2,6 +2,7 @@ package Cvorovi;
 
 import sun.reflect.generics.tree.Tree;
 
+import javax.swing.*;
 import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -9,9 +10,14 @@ import java.util.Enumeration;
 public class Prezentacija implements TreeNode {
     private ArrayList<Slajd> slajdovi = new ArrayList<Slajd>();
     private String name;
+    private String autor;
+    private String slikatema;
 
     public Prezentacija(String projectName) {
         this.name=projectName;
+        slikatema= new String("slika.jpg");
+
+
 
     }
 

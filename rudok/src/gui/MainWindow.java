@@ -1,6 +1,7 @@
 package gui;
 
 import Actions.ActionManager;
+import Cvorovi.WorkspaceModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ public class MainWindow extends JFrame {
 
     private static MainWindow instance = null;
     private ActionManager actionManager = new ActionManager();
+    WorkspaceTree workspaceTree;
 
     private MainWindow()
     {
@@ -40,7 +42,7 @@ public class MainWindow extends JFrame {
         JMenuItem novi = new JMenuItem("new");
         jMenuBar.add(file);
         jMenuBar.add(help);
-//        file.add(novi);
+        //file.add(novi);
         file.add(actionManager.getNewAction());
         file.add(actionManager.getInfoAction());
         help.add(edit);
@@ -49,14 +51,28 @@ public class MainWindow extends JFrame {
         JToolBar jToolBar = new JToolBar();
         jToolBar.add(actionManager.getNewAction());
         jToolBar.add(actionManager.getInfoAction());
+        jToolBar.add(actionManager.getDodajCvorAkcija());
+        jToolBar.add(actionManager.getRenameAutorAction());
         this.getContentPane().add(jToolBar,BorderLayout.NORTH);
 
-        JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(), new RadnaPovrsinaPanel());
+        workspaceTree = new WorkspaceTree();
+        WorkspaceModel workspaceModel = new WorkspaceModel();
+        workspaceTree.setModel(workspaceModel);
+
+        JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(workspaceTree), new RadnaPovrsinaPanel());
         this.getContentPane().add(jSplitPane,BorderLayout.CENTER);
-        jSplitPane.setDividerLocation(350);
+        jSplitPane.setDividerLocation(160);
 
 
 
+    }
+
+    public WorkspaceTree getWorkspaceTree() {
+        return workspaceTree;
+    }
+
+    public void setWorkspaceTree(WorkspaceTree workspaceTree) {
+        this.workspaceTree = workspaceTree;
     }
 
     public ActionManager getActionManager() {

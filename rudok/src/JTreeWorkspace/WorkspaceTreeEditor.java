@@ -1,6 +1,7 @@
 package JTreeWorkspace;
 
 import Cvorovi.Projekat;
+import Cvorovi.Workspace;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -45,7 +46,7 @@ public class WorkspaceTreeEditor extends DefaultTreeCellEditor implements Action
         if (stavka instanceof Projekat){
             ((Projekat)stavka).setName(e.getActionCommand());
         }else{
-            ((Projekat)stavka).setName(e.getActionCommand());
+             //((Workspace)stavka).setName(e.getActionCommand());
         }
 
         //posle promene imena ili dijagrama treba obezbediti i promenu imena u GEDView-u
