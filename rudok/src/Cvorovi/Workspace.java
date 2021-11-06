@@ -61,7 +61,6 @@ public class Workspace implements TreeNode{
         public Projekat getProject(int index) {
             return projects.get(index);
         }
-
         public int getProjectIndex(Projekat project) {
             return projects.indexOf(project);
         }

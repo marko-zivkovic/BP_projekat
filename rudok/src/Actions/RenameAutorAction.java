@@ -11,8 +11,8 @@ public class RenameAutorAction extends AbstractMyAction{
     public RenameAutorAction (){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("iinfo.png"));
-        putValue(SHORT_DESCRIPTION, "info");
+        putValue(SMALL_ICON, loadIcon("pen.png"));
+        putValue(SHORT_DESCRIPTION, "nazovi");
     }
 
     @Override

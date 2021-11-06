@@ -2,6 +2,7 @@ package Actions;
 
 import Cvorovi.Prezentacija;
 import Cvorovi.Projekat;
+import Cvorovi.Slajd;
 import Cvorovi.Workspace;
 import gui.AboutInfo;
 import gui.MainWindow;
@@ -16,8 +17,8 @@ public class DodajCvorAkcija extends AbstractMyAction{
     public DodajCvorAkcija(){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("iinfo.png"));
-        putValue(SHORT_DESCRIPTION, "info");
+        putValue(SMALL_ICON, loadIcon("plus.png"));
+        putValue(SHORT_DESCRIPTION, "dodaj");
     }
 
     @Override
@@ -30,8 +31,14 @@ public class DodajCvorAkcija extends AbstractMyAction{
 
 
         }else if(p instanceof Projekat){
-            Prezentacija pp = new Prezentacija("Prez1");
-            ((Projekat)p).addPrezentacija(pp);
+            Prezentacija p1 = new Prezentacija("new prez");
+            ((Projekat)p).addPrezentacija(p1);
+            SwingUtilities.updateComponentTreeUI(MainWindow.getInstance().getWorkspaceTree());
+
+        }
+        else if(p instanceof Prezentacija){
+            Slajd p2 = new Slajd("new slajd");
+            ((Prezentacija)p).addSlajd(p2);
             SwingUtilities.updateComponentTreeUI(MainWindow.getInstance().getWorkspaceTree());
 
         }

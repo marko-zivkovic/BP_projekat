@@ -24,7 +24,7 @@ public class Prezentacija implements TreeNode {
 
     public void addSlajd(Slajd slajd){
         slajdovi.add(slajd);
-        slajd.setName( this.name+" - Diagram  - Grafički editor: "+String.valueOf(slajdovi.size()));
+        slajd.setName( this.name+" - Slajd  - Grafički editor: "+String.valueOf(slajdovi.size()));
 
     }
 

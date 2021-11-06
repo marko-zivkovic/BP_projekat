@@ -50,9 +50,9 @@ public class MainWindow extends JFrame {
 
         JToolBar jToolBar = new JToolBar();
         jToolBar.add(actionManager.getNewAction());
-        jToolBar.add(actionManager.getInfoAction());
         jToolBar.add(actionManager.getDodajCvorAkcija());
         jToolBar.add(actionManager.getRenameAutorAction());
+        jToolBar.add(actionManager.getInfoAction());
         this.getContentPane().add(jToolBar,BorderLayout.NORTH);
 
         workspaceTree = new WorkspaceTree();
@@ -61,7 +61,7 @@ public class MainWindow extends JFrame {
 
         JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(workspaceTree), new RadnaPovrsinaPanel());
         this.getContentPane().add(jSplitPane,BorderLayout.CENTER);
-        jSplitPane.setDividerLocation(160);
+        jSplitPane.setDividerLocation(250);
 
 
 
