@@ -7,12 +7,18 @@ public class ActionManager {
     InfoAction infoAction;
     DodajCvorAkcija dodajCvorAkcija;
     RenameAutorAction renameAutorAction;
+    NovaSlikaAction novaSlikaAction;
 
     public ActionManager() {
         this.newAction = new NewAction();
         this.infoAction = new InfoAction();
         this.dodajCvorAkcija = new DodajCvorAkcija();
         this. renameAutorAction = new RenameAutorAction();
+        this.novaSlikaAction = new NovaSlikaAction();
+    }
+
+    public NovaSlikaAction getNovaSlikaAction() {
+        return novaSlikaAction;
     }
 
     public NewAction getNewAction() {

@@ -10,7 +10,8 @@ public class MainWindow extends JFrame {
 
     private static MainWindow instance = null;
     private ActionManager actionManager = new ActionManager();
-    WorkspaceTree workspaceTree;
+    private WorkspaceTree workspaceTree;
+    private MojTabbedPane mojTabbedPane;
 
     private MainWindow()
     {
@@ -53,13 +54,15 @@ public class MainWindow extends JFrame {
         jToolBar.add(actionManager.getDodajCvorAkcija());
         jToolBar.add(actionManager.getRenameAutorAction());
         jToolBar.add(actionManager.getInfoAction());
+        jToolBar.add(actionManager.getNovaSlikaAction());
         this.getContentPane().add(jToolBar,BorderLayout.NORTH);
 
         workspaceTree = new WorkspaceTree();
         WorkspaceModel workspaceModel = new WorkspaceModel();
         workspaceTree.setModel(workspaceModel);
 
-        JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(workspaceTree), new RadnaPovrsinaPanel());
+        mojTabbedPane = new MojTabbedPane();
+        JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(workspaceTree), mojTabbedPane);
         this.getContentPane().add(jSplitPane,BorderLayout.CENTER);
         jSplitPane.setDividerLocation(250);
 
@@ -77,6 +80,10 @@ public class MainWindow extends JFrame {
 
     public ActionManager getActionManager() {
         return actionManager;
+    }
+
+    public MojTabbedPane getMojTabbedPane() {
+        return mojTabbedPane;
     }
 
     public void setActionManager(ActionManager actionManager) {

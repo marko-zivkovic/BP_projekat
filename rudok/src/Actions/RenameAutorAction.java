@@ -1,10 +1,13 @@
 package Actions;
 
+import Cvorovi.Prezentacija;
 import gui.AboutInfo;
+import gui.MainWindow;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class RenameAutorAction extends AbstractMyAction{
@@ -26,11 +29,26 @@ public class RenameAutorAction extends AbstractMyAction{
         prozor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JTextField text = new JTextField();
-        JButton dugme = new JButton();
+        JButton dugme = new JButton("Promeni");
         prozor.getContentPane().add(poruka,BorderLayout.NORTH);
         prozor.getContentPane().add(text,BorderLayout.CENTER);
         prozor.getContentPane().add(dugme,BorderLayout.SOUTH);
         poruka.setHorizontalAlignment(SwingConstants.CENTER);
+
+        dugme.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                Object p = MainWindow.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+                if( p instanceof Prezentacija) {
+                    System.out.println(((Prezentacija) p).getAutor());
+                    ((Prezentacija) p).setAutor(text.getText());
+                    System.out.println(((Prezentacija) p).getAutor());
+
+                }
+            }
+        });
 
 
     }

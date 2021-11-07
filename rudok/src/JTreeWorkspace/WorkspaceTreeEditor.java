@@ -1,7 +1,11 @@
 package JTreeWorkspace;
 
+import Cvorovi.Prezentacija;
 import Cvorovi.Projekat;
 import Cvorovi.Workspace;
+import gui.MainWindow;
+import gui.MojTabbedPane;
+import gui.PrezentacijaView;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -33,10 +37,29 @@ public class WorkspaceTreeEditor extends DefaultTreeCellEditor implements Action
 
 
     public boolean isCellEditable(EventObject arg0) {
-        if (arg0 instanceof MouseEvent)
+        if (arg0 instanceof MouseEvent){
             if (((MouseEvent)arg0).getClickCount()==3){
                 return true;
             }
+            if (((MouseEvent)arg0).getClickCount()==2){
+                Object p = MainWindow.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+                if(p instanceof Projekat){
+                    MojTabbedPane mtp = MainWindow.getInstance().getMojTabbedPane();
+                    for(Prezentacija pr : ((Projekat) p).getPrezentacije()){
+
+                        PrezentacijaView pv = new PrezentacijaView(pr);
+                        mtp.add(pv);
+
+                       /*
+                        SlideView
+                                slideView.setBac pr.
+                        **/
+
+                    }
+                }
+            }
+        }
+
         return false;
     }
 

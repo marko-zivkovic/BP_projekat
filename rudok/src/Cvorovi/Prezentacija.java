@@ -16,11 +16,39 @@ public class Prezentacija implements TreeNode {
     public Prezentacija(String projectName) {
         this.name=projectName;
         slikatema= new String("slika.jpg");
+        this.autor = "Marko Zivkovic";
 
 
 
     }
 
+    public ArrayList<Slajd> getSlajdovi() {
+        return slajdovi;
+    }
+
+    public void setSlajdovi(ArrayList<Slajd> slajdovi) {
+        this.slajdovi = slajdovi;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getSlikatema() {
+        return slikatema;
+    }
+
+    public void setSlikatema(String slikatema) {
+        this.slikatema = slikatema;
+    }
 
     public void addSlajd(Slajd slajd){
         slajdovi.add(slajd);

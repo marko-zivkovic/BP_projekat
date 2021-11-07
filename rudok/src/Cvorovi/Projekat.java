@@ -47,6 +47,9 @@ public class Projekat implements TreeNode{
         return getPrezentacija(arg0);
     }
 
+    public ArrayList<Prezentacija> getPrezentacije() {
+        return prezentacije;
+    }
 
     public int getChildCount() {
         return getPrezentacijaCount();
