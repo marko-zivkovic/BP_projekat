@@ -30,7 +30,7 @@ public class MainWindow extends JFrame {
         Dimension screenD = tk.getScreenSize();
         int visina = screenD.height;
         int sirina = screenD.width;
-        setSize(sirina/2,visina/2);
+        setSize((sirina/2)+100,(visina/2)+200);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
         setVisible(true);
@@ -52,9 +52,11 @@ public class MainWindow extends JFrame {
         JToolBar jToolBar = new JToolBar();
         jToolBar.add(actionManager.getNewAction());
         jToolBar.add(actionManager.getDodajCvorAkcija());
+        jToolBar.add(actionManager.getBrisanjeCvoraAction());
         jToolBar.add(actionManager.getRenameAutorAction());
-        jToolBar.add(actionManager.getInfoAction());
         jToolBar.add(actionManager.getNovaSlikaAction());
+        jToolBar.add(actionManager.getInfoAction());
+
         this.getContentPane().add(jToolBar,BorderLayout.NORTH);
 
         workspaceTree = new WorkspaceTree();

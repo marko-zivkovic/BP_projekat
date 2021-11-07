@@ -8,6 +8,7 @@ public class ActionManager {
     DodajCvorAkcija dodajCvorAkcija;
     RenameAutorAction renameAutorAction;
     NovaSlikaAction novaSlikaAction;
+    BrisanjeCvoraAction brisanjeCvoraAction;
 
     public ActionManager() {
         this.newAction = new NewAction();
@@ -15,6 +16,11 @@ public class ActionManager {
         this.dodajCvorAkcija = new DodajCvorAkcija();
         this. renameAutorAction = new RenameAutorAction();
         this.novaSlikaAction = new NovaSlikaAction();
+        this.brisanjeCvoraAction = new BrisanjeCvoraAction();
+    }
+
+    public BrisanjeCvoraAction getBrisanjeCvoraAction() {
+        return brisanjeCvoraAction;
     }
 
     public NovaSlikaAction getNovaSlikaAction() {
