@@ -2,10 +2,12 @@ package JTreeWorkspace;
 
 import Cvorovi.Prezentacija;
 import Cvorovi.Projekat;
+import Cvorovi.Slajd;
 import Cvorovi.Workspace;
 import gui.MainWindow;
 import gui.MojTabbedPane;
 import gui.PrezentacijaView;
+import gui.SlajdView;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -48,7 +50,11 @@ public class WorkspaceTreeEditor extends DefaultTreeCellEditor implements Action
                     for(Prezentacija pr : ((Projekat) p).getPrezentacije()){
 
                         PrezentacijaView pv = new PrezentacijaView(pr);
-                        mtp.add(pv);
+                        addMyTabToTabbedPane(pr.getName(), pv,mtp);
+                        for(Slajd s:pr.getSlajdovi()){
+                            pv.add(new SlajdView(s,pr));
+                        }
+
 
                        /*
                         SlideView
@@ -61,6 +67,12 @@ public class WorkspaceTreeEditor extends DefaultTreeCellEditor implements Action
         }
 
         return false;
+    }
+    private void addMyTabToTabbedPane(String nazivTaba, PrezentacijaView p, MojTabbedPane mtp) {
+        // ucitavanje ikonice
+        //ImageIcon icon = createImageIcon("images/img.png", true);
+       mtp.add(nazivTaba,p);
+
     }
 
 

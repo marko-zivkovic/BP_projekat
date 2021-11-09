@@ -52,13 +52,20 @@ public class Workspace implements TreeNode{
             // TODO Auto-generated method stub
             return (Enumeration<Projekat>) projects;
         }
+        public void brisanje (Projekat pro){
+            projects.remove(pro);
+        }
 
         public void addProject(Projekat project){
             projects.add(project);
             project.setName("Project - Grafički editor "+projects.size());
         }
 
-        public Projekat getProject(int index) {
+    public ArrayList<Projekat> getProjects() {
+        return projects;
+    }
+
+    public Projekat getProject(int index) {
             return projects.get(index);
         }
         public int getProjectIndex(Projekat project) {

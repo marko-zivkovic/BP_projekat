@@ -1,8 +1,14 @@
 package Actions;
 
+import Cvorovi.Prezentacija;
+import Cvorovi.Projekat;
+import Cvorovi.Workspace;
 import gui.MainWindow;
+import gui.PrezentacijaView;
+import gui.WorkspaceTree;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultTreeModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -18,5 +24,22 @@ public class BrisanjeCvoraAction extends AbstractMyAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         Object p = MainWindow.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+         if(p instanceof Projekat){
+             WorkspaceTree wst = MainWindow.getInstance().getWorkspaceTree();
+             Workspace workspace = (Workspace) wst.getModel().getRoot();
+             workspace.brisanje((Projekat) p);
+             SwingUtilities.updateComponentTreeUI(MainWindow.getInstance().getWorkspaceTree());
+
+         }
+         if(p instanceof Prezentacija){
+             WorkspaceTree wst = MainWindow.getInstance().getWorkspaceTree();
+             Workspace workspace = (Workspace) wst.getModel().getRoot();
+             for(Projekat pp: workspace.getProjects()){
+                 if(pp.getPrezentacije().contains(p)){
+                     pp.brisanje((Prezentacija) p);
+                 }
+             }
+             SwingUtilities.updateComponentTreeUI(MainWindow.getInstance().getWorkspaceTree());
+         }
     }
 }

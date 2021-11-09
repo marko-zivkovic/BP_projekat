@@ -1,17 +1,23 @@
 package Cvorovi;
 
+import Observer.ISubscriber;
+import Observer.IPublisher;
+
 import sun.reflect.generics.tree.Tree;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
-public class Prezentacija implements TreeNode {
+public class Prezentacija implements TreeNode, IPublisher {
     private ArrayList<Slajd> slajdovi = new ArrayList<Slajd>();
     private String name;
     private String autor;
     private String slikatema;
+    List<ISubscriber> subscribers;
+
 
     public Prezentacija(String projectName) {
         this.name=projectName;
@@ -28,6 +34,7 @@ public class Prezentacija implements TreeNode {
 
     public void setSlajdovi(ArrayList<Slajd> slajdovi) {
         this.slajdovi = slajdovi;
+        ///
     }
 
     public String getName() {
@@ -40,6 +47,7 @@ public class Prezentacija implements TreeNode {
 
     public void setAutor(String autor) {
         this.autor = autor;
+        this.notifySubscribers(this);
     }
 
     public String getSlikatema() {
@@ -106,8 +114,39 @@ public class Prezentacija implements TreeNode {
     }
 
 
+
     public Enumeration children() {
         // TODO Auto-generated method stub
         return (Enumeration) slajdovi;
     }
+    @Override
+    public void addSubscriber(ISubscriber sub) {
+        // TODO Auto-generated method stub
+        if(sub == null)
+            return;
+        if(this.subscribers ==null)
+            this.subscribers = new ArrayList<>();
+        if(this.subscribers.contains(sub))
+            return;
+        this.subscribers.add(sub);
+    }
+
+    @Override
+    public void removeSubscriber(ISubscriber sub) {
+        // TODO Auto-generated method stub
+        if(sub == null || this.subscribers == null || !this.subscribers.contains(sub))
+            return;
+        this.subscribers.remove(sub);
+    }
+
+    @Override
+    public void notifySubscribers(Object notification) {
+        // TODO Auto-generated method stub
+        if (notification == null || this.subscribers == null || this.subscribers.isEmpty())
+            return;
+        for(ISubscriber listener : subscribers){
+            listener.update(notification);
+        }
+    }
+
 }
