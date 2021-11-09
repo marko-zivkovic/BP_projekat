@@ -2,6 +2,7 @@ package Actions;
 
 import Cvorovi.Prezentacija;
 import Cvorovi.Projekat;
+import Cvorovi.Slajd;
 import Cvorovi.Workspace;
 import gui.MainWindow;
 import gui.PrezentacijaView;
@@ -41,5 +42,17 @@ public class BrisanjeCvoraAction extends AbstractMyAction{
              }
              SwingUtilities.updateComponentTreeUI(MainWindow.getInstance().getWorkspaceTree());
          }
+        if(p instanceof Slajd){
+            WorkspaceTree wst = MainWindow.getInstance().getWorkspaceTree();
+            Workspace workspace = (Workspace) wst.getModel().getRoot();
+            for(Projekat pp: workspace.getProjects()){
+               for(Prezentacija ss: pp.getPrezentacije()){
+                   if(ss.getSlajdovi().contains(p)){
+                       ss.brisanje((Slajd) p);
+                   }
+               }
+            }
+            SwingUtilities.updateComponentTreeUI(MainWindow.getInstance().getWorkspaceTree());
+        }
     }
 }

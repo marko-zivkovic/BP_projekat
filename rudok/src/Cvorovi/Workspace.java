@@ -58,7 +58,7 @@ public class Workspace implements TreeNode{
 
         public void addProject(Projekat project){
             projects.add(project);
-            project.setName("Project - Grafički editor "+projects.size());
+            project.setName("Project "+projects.size());
         }
 
     public ArrayList<Projekat> getProjects() {

@@ -18,10 +18,11 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
         // panel za toolbar
         this.topPanel = new JPanel();
-        topPanel.add(new JLabel("Prezentacija " + prezentacija.getName()));
+        topPanel.add(new JLabel(prezentacija.getName()));
         this.add(topPanel, BorderLayout.NORTH);
-        autor.setText(prezentacija.getAutor());
-        this.add(autor, BorderLayout.EAST);
+        autor.setText("Autor: "+prezentacija.getAutor());
+        this.add(autor, BorderLayout.SOUTH);
+        autor.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
     @Override

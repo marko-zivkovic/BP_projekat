@@ -36,6 +36,9 @@ public class Prezentacija implements TreeNode, IPublisher {
         this.slajdovi = slajdovi;
         ///
     }
+    public void brisanje (Slajd pro){
+        slajdovi.remove(pro);
+    }
 
     public String getName() {
         return name;
@@ -60,7 +63,7 @@ public class Prezentacija implements TreeNode, IPublisher {
 
     public void addSlajd(Slajd slajd){
         slajdovi.add(slajd);
-        slajd.setName( this.name+" - Slajd  - Grafički editor: "+String.valueOf(slajdovi.size()));
+        slajd.setName("Slajd "+String.valueOf(slajdovi.size()));
 
     }
 

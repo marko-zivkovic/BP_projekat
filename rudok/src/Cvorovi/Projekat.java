@@ -16,7 +16,7 @@ public class Projekat implements TreeNode{
 
     public void addPrezentacija(Prezentacija prezentacija){
         prezentacije.add(prezentacija);
-        prezentacija.setName( this.name+" - Prezentacija  - Grafički editor: "+String.valueOf(prezentacije.size()));
+        prezentacija.setName("Prezentacija "+String.valueOf(prezentacije.size()));
 
     }
 
