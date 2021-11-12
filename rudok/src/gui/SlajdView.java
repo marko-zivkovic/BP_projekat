@@ -13,7 +13,7 @@ public class SlajdView extends JPanel {
     public SlajdView (Slajd ss, Prezentacija pre){
         this.slajd=ss;
         this.prezz=pre;
-        System.out.println(prezz.getSlikatema());
+       // System.out.println(prezz.getSlikatema());
         ImageIcon slika = new ImageIcon(getClass().getResource(prezz.getSlikatema()));
         JLabel jslika = new JLabel(slika);
 

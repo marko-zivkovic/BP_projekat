@@ -22,7 +22,7 @@ public class RenameAutorAction extends AbstractMyAction{
     public void actionPerformed(ActionEvent e) {
        JFrame prozor = new JFrame();
        JLabel poruka = new JLabel("Unesite novo ime autora");
-        prozor.setSize(550,550);
+        prozor.setSize(300,150);
         prozor.setLayout(new BorderLayout());
         prozor.setLocationRelativeTo(null);
         prozor.setVisible(true);
@@ -34,6 +34,7 @@ public class RenameAutorAction extends AbstractMyAction{
         prozor.getContentPane().add(text,BorderLayout.CENTER);
         prozor.getContentPane().add(dugme,BorderLayout.SOUTH);
         poruka.setHorizontalAlignment(SwingConstants.CENTER);
+        text.setHorizontalAlignment(SwingConstants.CENTER);
 
         dugme.addActionListener(new ActionListener() {
 

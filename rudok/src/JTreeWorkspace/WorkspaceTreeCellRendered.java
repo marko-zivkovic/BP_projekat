@@ -26,14 +26,14 @@ public class WorkspaceTreeCellRendered extends DefaultTreeCellRenderer {
 
 
         if (value instanceof Slajd) {
-            URL imageURL = getClass().getResource("images/tdiagram.gif");
+            URL imageURL = getClass().getResource("star.png");
             Icon icon = null;
             if (imageURL != null)
                 icon = new ImageIcon(imageURL);
             setIcon(icon);
 
         } else if (value instanceof Projekat) {
-            URL imageURL = getClass().getResource("images/tproject.gif");
+            URL imageURL = getClass().getResource("star.png");
             Icon icon = null;
             if (imageURL != null)
                 icon = new ImageIcon(imageURL);

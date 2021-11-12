@@ -20,9 +20,7 @@ public class WorkspaceTreeController implements TreeSelectionListener {
             if(path.getPathComponent(i) instanceof Projekat){
                 Projekat d=(Projekat)path.getPathComponent(i);
 
-                //selektovan je dijagram u stablu, potreno je pronaci odgovarajuci
-                //DiagramView i postaviti ga u fokus
-                System.out.println("Selektovan dijagram:"+d);
+                System.out.println("Selektovan cvor:"+d);
 
                 System.out.println("getPath: "+e.getPath());
                 System.out.println("getPath: "+e.getNewLeadSelectionPath());

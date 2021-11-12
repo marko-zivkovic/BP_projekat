@@ -9,8 +9,8 @@ public class Slajd implements TreeNode {
 
 
 
-    public Slajd (String diagramName) {
-        name=diagramName;
+    public Slajd (String Name) {
+        name=Name;
 
     }
 
