@@ -69,8 +69,7 @@ public class WorkspaceTreeEditor extends DefaultTreeCellEditor implements Action
         return false;
     }
     private void addMyTabToTabbedPane(String nazivTaba, PrezentacijaView p, MojTabbedPane mtp) {
-        // ucitavanje ikonice
-        //ImageIcon icon = createImageIcon("images/img.png", true);
+
        mtp.add(nazivTaba,p);
 
     }

@@ -26,7 +26,7 @@ public class RenameAutorAction extends AbstractMyAction{
         prozor.setLayout(new BorderLayout());
         prozor.setLocationRelativeTo(null);
         prozor.setVisible(true);
-        prozor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        prozor.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JTextField text = new JTextField();
         JButton dugme = new JButton("Promeni");

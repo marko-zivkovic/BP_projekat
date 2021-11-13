@@ -15,7 +15,7 @@ public class AboutInfo extends JFrame {
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         this.getContentPane().add(jLabel,BorderLayout.NORTH);
         this.getContentPane().add(jslika,BorderLayout.CENTER);

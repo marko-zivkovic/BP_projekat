@@ -19,11 +19,9 @@ public class WorkspaceTreeController implements TreeSelectionListener {
         for(int i=0; i<path.getPathCount(); i++){
             if(path.getPathComponent(i) instanceof Projekat){
                 Projekat d=(Projekat)path.getPathComponent(i);
-
-                System.out.println("Selektovan cvor:"+d);
-
+                System.out.println("Selektovan cvor:");
                 System.out.println("getPath: "+e.getPath());
-                System.out.println("getPath: "+e.getNewLeadSelectionPath());
+                System.out.println("getPath: "+e.getNewLeadSelectionPath()+"\n");
                 break;
             }
         }

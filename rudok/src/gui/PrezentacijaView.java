@@ -9,6 +9,7 @@ import java.awt.*;
 public class PrezentacijaView extends JPanel implements ISubscriber {
 
     private static final long serialVersionUID = 7445755320045782268L;
+    public String novaslika;
 
     private JPanel topPanel;
     private JLabel autor = new JLabel("Marko Zivkovic");
@@ -28,5 +29,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     @Override
     public void update(Object notification) {
         autor.setText(((Prezentacija) notification).getAutor());
+        novaslika = ((Prezentacija) notification).getSlikatema();
     }
+
 }
