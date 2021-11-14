@@ -18,8 +18,8 @@ public class SlajdView extends JPanel implements ISubscriber {
         this.prezz=pre;
         pre.addSubscriber(this);
 
-       // System.out.println(prezz.getSlikatema());
-        slika = new ImageIcon(getClass().getResource(prezz.getSlikatema()));
+        System.out.println(prezz.getSlikatema());
+        slika = new ImageIcon(prezz.getSlikatema());
         jslika = new JLabel(slika);
 
         setSize(550,550);
@@ -33,8 +33,20 @@ public class SlajdView extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object notification) {
-        slika = new ImageIcon(getClass().getResource(((Prezentacija)notification).getSlikatema()));
-        jslika = new JLabel(slika);
+        if(notification instanceof String && !notification.equals("odstupi")){
+            slika = new ImageIcon(((Prezentacija)notification).getSlikatema());
+            this.removeAll();
+            jslika = new JLabel(slika);
+            add(jslika,BorderLayout.CENTER);
+            this.revalidate();
+            this.repaint();
+        }else if(notification.equals(slajd)){
+            this.removeAll();
+            this.revalidate();
+            this.repaint();
+            System.out.println("USAPOPOPOOOOO)!23123123123123");
+        }
+
 
     }
 }

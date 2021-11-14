@@ -21,7 +21,7 @@ public class Prezentacija implements TreeNode, IPublisher {
 
     public Prezentacija(String projectName) {
         this.name=projectName;
-        slikatema= new String("slika.jpg");
+        slikatema= new String("D:\\IntelliJ RAF\\rudok\\src\\gui\\slika.jpg");
         this.autor = "Marko Zivkovic";
 
 
@@ -38,6 +38,7 @@ public class Prezentacija implements TreeNode, IPublisher {
     }
     public void brisanje (Slajd pro){
         slajdovi.remove(pro);
+        notifySubscribers(pro);
     }
 
     public String getName() {
@@ -59,6 +60,7 @@ public class Prezentacija implements TreeNode, IPublisher {
 
     public void setSlikatema(String slikatema) {
         this.slikatema = slikatema;
+        notifySubscribers(this);
     }
 
     public void addSlajd(Slajd slajd){

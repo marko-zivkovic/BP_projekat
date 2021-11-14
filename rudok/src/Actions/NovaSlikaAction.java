@@ -31,9 +31,10 @@ public class NovaSlikaAction extends AbstractMyAction{
         {
             Object p = MainWindow.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
             if( p instanceof Prezentacija) {
+                System.out.println("usaoooooooo " + j.getSelectedFile().getAbsolutePath());
 
                 ((Prezentacija) p).setSlikatema(j.getSelectedFile().getAbsolutePath());
-                System.out.println(((Prezentacija) p).getSlikatema());
+                System.out.println(((Prezentacija) p).getSlikatema() + " ----");
 
             }
 

@@ -75,8 +75,10 @@ public class Projekat implements TreeNode{
     public String getName() {
         return name;
     }
-    public void brisanje (Prezentacija pro){
-        prezentacije.remove(pro);
+    public void brisanje (Prezentacija prezentacija){
+        prezentacije.remove(prezentacija);
+        prezentacija.notifySubscribers("odstupi");
+
     }
 
     public Enumeration children() {

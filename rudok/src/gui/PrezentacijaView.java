@@ -1,6 +1,7 @@
 package gui;
 
 import Cvorovi.Prezentacija;
+import Cvorovi.Slajd;
 import Observer.ISubscriber;
 
 import javax.swing.*;
@@ -13,23 +14,37 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
     private JPanel topPanel;
     private JLabel autor = new JLabel("Marko Zivkovic");
-    public PrezentacijaView(Prezentacija prezentacija){
-        this.setLayout(new BorderLayout());;
+    private JPanel centar = new JPanel();
+
+    public PrezentacijaView(Prezentacija prezentacija) {
+        this.setLayout(new BorderLayout());
+        ;
         prezentacija.addSubscriber(this);
 
         // panel za toolbar
         this.topPanel = new JPanel();
         topPanel.add(new JLabel(prezentacija.getName()));
         this.add(topPanel, BorderLayout.NORTH);
-        autor.setText("Autor: "+prezentacija.getAutor());
+        autor.setText("Autor: " + prezentacija.getAutor());
         this.add(autor, BorderLayout.SOUTH);
         autor.setHorizontalAlignment(SwingConstants.CENTER);
+        this.add(centar, BorderLayout.CENTER);
     }
 
     @Override
     public void update(Object notification) {
-        autor.setText(((Prezentacija) notification).getAutor());
-        novaslika = ((Prezentacija) notification).getSlikatema();
+        if (notification instanceof String && notification.equals("odstupi")) {
+            this.removeAll();
+
+            MainWindow.getInstance().getMojTabbedPane().removeAll();
+        } else if(!(notification instanceof String) && !(notification instanceof Slajd)) {
+            autor.setText(((Prezentacija) notification).getAutor());
+            novaslika = ((Prezentacija) notification).getSlikatema();
+
+        }
     }
 
+    public JPanel getCentar() {
+        return centar;
+    }
 }
