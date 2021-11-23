@@ -3,7 +3,6 @@ package Cvorovi;
 import Observer.ISubscriber;
 import Observer.IPublisher;
 
-import sun.reflect.generics.tree.Tree;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
@@ -21,7 +20,7 @@ public class Prezentacija implements TreeNode, IPublisher {
 
     public Prezentacija(String projectName) {
         this.name=projectName;
-        slikatema= new String("D:\\IntelliJ RAF\\rudok\\src\\gui\\slika.jpg");
+        slikatema= new String("D:\\RuDok\\rudok\\src\\gui\\slika.jpg");
         this.autor = "Marko Zivkovic";
 
 

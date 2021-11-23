@@ -18,7 +18,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
     public PrezentacijaView(Prezentacija prezentacija) {
         this.setLayout(new BorderLayout());
-        ;
+
         prezentacija.addSubscriber(this);
 
         // panel za toolbar
@@ -29,6 +29,8 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         this.add(autor, BorderLayout.SOUTH);
         autor.setHorizontalAlignment(SwingConstants.CENTER);
         this.add(centar, BorderLayout.CENTER);
+
+        this.setBackground(Color.green);
     }
 
     @Override
