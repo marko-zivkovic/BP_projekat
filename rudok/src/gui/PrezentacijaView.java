@@ -28,8 +28,20 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         autor.setText("Autor: " + prezentacija.getAutor());
         this.add(autor, BorderLayout.SOUTH);
         autor.setHorizontalAlignment(SwingConstants.CENTER);
-        this.add(centar, BorderLayout.CENTER);
 
+        centar.setLayout(new BoxLayout(centar, BoxLayout.Y_AXIS));
+      //  centar.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
+        centar.setPreferredSize(new Dimension(100,250));
+        centar.setMaximumSize(new Dimension(100,250));
+        JScrollPane jsp = new JScrollPane(centar);
+        jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        this.add(jsp, BorderLayout.CENTER);
+  //      jsp.setPreferredSize(new Dimension(100, 500));
+  //      jsp.setMaximumSize(new Dimension(100, 500));
+   //     jsp.setSize(100, 500);
         this.setBackground(Color.green);
     }
 

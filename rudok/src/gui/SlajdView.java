@@ -27,14 +27,19 @@ public class SlajdView extends JPanel implements ISubscriber {
         //slika = new ImageIcon(prezz.getSlikatema());
         //jslika = new JLabel(slika);
         panel = new ImagePanel(prezz.getSlikatema());
+//        panel.setSize(100, 250);
+//        panel.setPreferredSize(new Dimension(100, 250));
+//        panel.setMinimumSize(new Dimension(100, 250));
+//        panel.setMaximumSize(new Dimension(100, 250));
+//        setSize(100, 250);
+//        setPreferredSize(new Dimension(100, 250));
+//        setMaximumSize(new Dimension(100, 250));
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        setSize(550, 550);
-        setLayout(new BorderLayout());
 
         setVisible(true);
 
-        add(panel, BorderLayout.CENTER);
-        this.setBackground(Color.red);
+        add(panel);
 
         // panel.setHorizontalAlignment(SwingConstants.CENTER);
     }
