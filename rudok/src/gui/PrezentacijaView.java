@@ -14,34 +14,28 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
     private JPanel topPanel;
     private JLabel autor = new JLabel("Marko Zivkovic");
-    private JPanel centar = new JPanel();
+    private JPanel centar;
 
     public PrezentacijaView(Prezentacija prezentacija) {
-        this.setLayout(new BorderLayout());
 
         prezentacija.addSubscriber(this);
-
+        this.setLayout(new BorderLayout());
         // panel za toolbar
         this.topPanel = new JPanel();
         topPanel.add(new JLabel(prezentacija.getName()));
         this.add(topPanel, BorderLayout.NORTH);
+
         autor.setText("Autor: " + prezentacija.getAutor());
         this.add(autor, BorderLayout.SOUTH);
         autor.setHorizontalAlignment(SwingConstants.CENTER);
 
+        centar = new JPanel();
         centar.setLayout(new BoxLayout(centar, BoxLayout.Y_AXIS));
-      //  centar.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-
-        centar.setPreferredSize(new Dimension(100,250));
-        centar.setMaximumSize(new Dimension(100,250));
-        JScrollPane jsp = new JScrollPane(centar);
-        jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        JScrollPane jsp = new JScrollPane(centar, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        centar.setBackground(Color.black);
         this.add(jsp, BorderLayout.CENTER);
-  //      jsp.setPreferredSize(new Dimension(100, 500));
-  //      jsp.setMaximumSize(new Dimension(100, 500));
-   //     jsp.setSize(100, 500);
+
         this.setBackground(Color.green);
     }
 
@@ -60,5 +54,11 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
     public JPanel getCentar() {
         return centar;
+    }
+
+    public void addSlajdView(SlajdView slideView) {
+        this.centar.add(slideView);
+        this.centar.add(Box.createVerticalStrut(10));
+        revalidate();
     }
 }

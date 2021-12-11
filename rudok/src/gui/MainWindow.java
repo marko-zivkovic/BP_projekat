@@ -33,7 +33,7 @@ public class MainWindow extends JFrame {
         setSize((sirina/2)+100,(visina/2)+200);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
-        setVisible(true);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JMenuBar jMenuBar = new JMenuBar();
@@ -68,6 +68,7 @@ public class MainWindow extends JFrame {
         this.getContentPane().add(jSplitPane,BorderLayout.CENTER);
         jSplitPane.setDividerLocation(250);
 
+        setVisible(true);
 
 
     }

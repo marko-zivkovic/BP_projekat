@@ -20,7 +20,7 @@ public class Prezentacija implements TreeNode, IPublisher {
 
     public Prezentacija(String projectName) {
         this.name=projectName;
-        slikatema= new String("D:\\IntelliJ RAF\\rudok\\src\\Actions\\slka.png");
+        slikatema= new String("slika.jpg");
         this.autor = "Marko Zivkovic";
 
 

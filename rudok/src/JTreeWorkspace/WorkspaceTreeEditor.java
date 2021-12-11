@@ -53,7 +53,7 @@ public class WorkspaceTreeEditor extends DefaultTreeCellEditor implements Action
                         addMyTabToTabbedPane(pr.getName(), pv,mtp);
                         //pv.setLayout(new BoxLayout(pv,BoxLayout.Y_AXIS));
                         for(Slajd s:pr.getSlajdovi()){
-                            pv.getCentar().add(new SlajdView(s,pr));
+                            pv.addSlajdView(new SlajdView(s,pr));
                         }
 
 

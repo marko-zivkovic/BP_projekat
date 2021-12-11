@@ -22,24 +22,13 @@ public class SlajdView extends JPanel implements ISubscriber {
         this.slajd = ss;
         this.prezz = pre;
         pre.addSubscriber(this);
-
+        this.setPreferredSize(new Dimension(300, 360));
+        this.setLayout(new BorderLayout());
         System.out.println(prezz.getSlikatema());
         //slika = new ImageIcon(prezz.getSlikatema());
         //jslika = new JLabel(slika);
         panel = new ImagePanel(prezz.getSlikatema());
-//        panel.setSize(100, 250);
-//        panel.setPreferredSize(new Dimension(100, 250));
-//        panel.setMinimumSize(new Dimension(100, 250));
-//        panel.setMaximumSize(new Dimension(100, 250));
-//        setSize(100, 250);
-//        setPreferredSize(new Dimension(100, 250));
-//        setMaximumSize(new Dimension(100, 250));
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-
-        setVisible(true);
-
-        add(panel);
+        add(panel, BorderLayout.CENTER);
 
         // panel.setHorizontalAlignment(SwingConstants.CENTER);
     }
@@ -49,12 +38,12 @@ public class SlajdView extends JPanel implements ISubscriber {
         private Image img;
 
         public ImagePanel(String imag) {
-            this.img = new ImageIcon(imag).getImage();
+            this.img = new ImageIcon(getClass().getResource(imag)).getImage();
         }
 
         public void setSlika(String slika) {
             this.slika = slika;
-            this.img = new ImageIcon(slika).getImage();
+            this.img = new ImageIcon(getClass().getResource(slika)).getImage();
             this.repaint();
         }
 
