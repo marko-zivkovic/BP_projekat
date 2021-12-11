@@ -51,16 +51,10 @@ public class WorkspaceTreeEditor extends DefaultTreeCellEditor implements Action
 
                         PrezentacijaView pv = new PrezentacijaView(pr);
                         addMyTabToTabbedPane(pr.getName(), pv,mtp);
-                        //pv.setLayout(new BoxLayout(pv,BoxLayout.Y_AXIS));
+
                         for(Slajd s:pr.getSlajdovi()){
                             pv.addSlajdView(new SlajdView(s,pr));
                         }
-
-
-                       /*
-                        SlideView
-                                slideView.setBac pr.
-                        **/
 
                     }
                 }

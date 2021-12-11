@@ -31,8 +31,10 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
         centar = new JPanel();
         centar.setLayout(new BoxLayout(centar, BoxLayout.Y_AXIS));
+        //SCROLLPANE kao poseban Pane
         JScrollPane jsp = new JScrollPane(centar, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
         centar.setBackground(Color.black);
         this.add(jsp, BorderLayout.CENTER);
 

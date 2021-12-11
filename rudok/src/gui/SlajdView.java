@@ -14,27 +14,23 @@ import java.io.IOException;
 public class SlajdView extends JPanel implements ISubscriber {
     Slajd slajd;
     Prezentacija prezz;
-    //ImageIcon slika;
-    //JLabel jslika;
     ImagePanel panel;
 
-    public SlajdView(Slajd ss, Prezentacija pre) {
+    public SlajdView(Slajd ss, Prezentacija prez) {
         this.slajd = ss;
-        this.prezz = pre;
-        pre.addSubscriber(this);
+        this.prezz = prez;
+
+        prez.addSubscriber(this);
         this.setPreferredSize(new Dimension(300, 360));
         this.setLayout(new BorderLayout());
         System.out.println(prezz.getSlikatema());
-        //slika = new ImageIcon(prezz.getSlikatema());
-        //jslika = new JLabel(slika);
         panel = new ImagePanel(prezz.getSlikatema());
         add(panel, BorderLayout.CENTER);
 
-        // panel.setHorizontalAlignment(SwingConstants.CENTER);
     }
     class ImagePanel extends JPanel {
 
-        private String slika;
+        //private String slika;
         private Image img;
 
         public ImagePanel(String imag) {
@@ -42,7 +38,7 @@ public class SlajdView extends JPanel implements ISubscriber {
         }
 
         public void setSlika(String slika) {
-            this.slika = slika;
+            //this.slika = slika;
             this.img = new ImageIcon(getClass().getResource(slika)).getImage();
             this.repaint();
         }
@@ -57,13 +53,9 @@ public class SlajdView extends JPanel implements ISubscriber {
     @Override
     public void update(Object notification) {
         if(notification instanceof String && !notification.equals("odstupi")){
-           // slika = new ImageIcon(((Prezentacija)notification).getSlikatema());
-            //this.removeAll();
-           // panel = new ImagePanel(((Prezentacija)notification).getSlikatema());
+
             panel.setSlika(((Prezentacija)notification).getSlikatema());
-            //add(panel,BorderLayout.CENTER);
-            //this.revalidate();
-           // this.repaint();
+
         }else if(notification.equals(slajd)){
             this.removeAll();
             this.revalidate();
