@@ -2,6 +2,7 @@ package gui;
 
 import Cvorovi.Prezentacija;
 import Cvorovi.Slajd;
+import Cvorovi.Slot;
 import Observer.ISubscriber;
 
 import javax.imageio.ImageIO;
@@ -61,6 +62,11 @@ public class SlajdView extends JPanel implements ISubscriber {
             this.revalidate();
             this.repaint();
             System.out.println("USAPOPOPOOOOO)!23123123123123");
+        }
+
+        for(Slot slot: slajd.getSlotovi()){
+            SlotView sv = new SlotView(slot);
+            //sv.paint(new Gra);
         }
 
 

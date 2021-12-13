@@ -57,4 +57,8 @@ public class Slajd implements TreeNode {
     public void addSlot (Slot s){
         slotovi.add(s);
     }
+
+    public ArrayList<Slot> getSlotovi() {
+        return slotovi;
+    }
 }
