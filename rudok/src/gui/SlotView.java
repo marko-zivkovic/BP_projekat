@@ -1,0 +1,32 @@
+package gui;
+
+import Cvorovi.Slot;
+
+import java.awt.*;
+
+public class SlotView {
+
+    private Slot slot;
+    private Shape shape;
+
+    public SlotView (Slot s){
+        this.slot = s;
+    }
+
+    public void paint(Graphics2D g){
+
+        g.setPaint(Color.GREEN);
+
+        g.setStroke(slot.getStroke());
+        g.draw(getShape());
+        g.setPaint(slot.getColor());
+        g.drawString(slot.getName(), slot.getX() + 10, slot.getY() + 10);
+
+        //g.fill(getShape());
+
+    }
+
+    public Shape getShape() {
+        return shape;
+    }
+}
