@@ -1,5 +1,6 @@
 package gui;
 
+import Actions.ActionManager;
 import Cvorovi.Prezentacija;
 import Cvorovi.Slajd;
 import Observer.ISubscriber;
@@ -15,6 +16,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     private JPanel topPanel;
     private JLabel autor = new JLabel("Marko Zivkovic");
     private JPanel centar;
+    private ActionManager actionManager = new ActionManager();
 
     public PrezentacijaView(Prezentacija prezentacija) {
 
@@ -39,6 +41,13 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         this.add(jsp, BorderLayout.CENTER);
 
         this.setBackground(Color.green);
+
+        JToolBar jToolBar = new JToolBar();
+        jToolBar.add(actionManager.getPravougaonikA());
+        topPanel.add(jToolBar);
+        //this.add(topPanel, BorderLayout.NORTH);
+
+
     }
 
     @Override

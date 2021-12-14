@@ -66,7 +66,7 @@ public class SlajdView extends JPanel implements ISubscriber {
 
         for(Slot slot: slajd.getSlotovi()){
             SlotView sv = new SlotView(slot);
-            //sv.paint(new Gra);
+            sv.paint(null);
         }
 
 

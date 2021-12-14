@@ -16,10 +16,10 @@ public class SlotView {
     public void paint(Graphics2D g){
 
         g.setPaint(Color.GREEN);
-
         g.setStroke(slot.getStroke());
         g.draw(getShape());
         g.setPaint(slot.getColor());
+        g.drawRect(slot.getX(), slot.getY(), slot.getW(), slot.getH());
         g.drawString(slot.getName(), slot.getX() + 10, slot.getY() + 10);
 
         //g.fill(getShape());

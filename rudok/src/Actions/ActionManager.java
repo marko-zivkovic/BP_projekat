@@ -9,6 +9,7 @@ public class ActionManager {
     RenameAutorAction renameAutorAction;
     NovaSlikaAction novaSlikaAction;
     BrisanjeCvoraAction brisanjeCvoraAction;
+    PravougaonikA pravougaonikA;
 
     public ActionManager() {
         this.newAction = new NewAction();
@@ -17,6 +18,7 @@ public class ActionManager {
         this. renameAutorAction = new RenameAutorAction();
         this.novaSlikaAction = new NovaSlikaAction();
         this.brisanjeCvoraAction = new BrisanjeCvoraAction();
+        this.pravougaonikA = new PravougaonikA();
     }
 
     public BrisanjeCvoraAction getBrisanjeCvoraAction() {
@@ -57,5 +59,9 @@ public class ActionManager {
 
     public void setRenameAutorAction(RenameAutorAction renameAutorAction) {
         this.renameAutorAction = renameAutorAction;
+    }
+
+    public PravougaonikA getPravougaonikA() {
+        return pravougaonikA;
     }
 }
