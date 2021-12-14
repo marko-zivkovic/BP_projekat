@@ -1,8 +1,10 @@
 package Actions;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.geom.GeneralPath;
 
 public class PravougaonikA extends AbstractMyAction{
 
@@ -16,4 +18,6 @@ public class PravougaonikA extends AbstractMyAction{
     public void actionPerformed(ActionEvent e) {
         System.out.println("pravougaonik");
     }
+
+
 }

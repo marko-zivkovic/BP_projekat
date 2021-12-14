@@ -3,6 +3,7 @@ package gui;
 import Cvorovi.Slot;
 
 import java.awt.*;
+import java.awt.geom.GeneralPath;
 
 public class SlotView {
 
@@ -14,6 +15,16 @@ public class SlotView {
     }
 
     public void paint(Graphics2D g){
+        shape = new GeneralPath();
+        ((GeneralPath)shape).moveTo(slot.getX(),slot.getY());
+
+        ((GeneralPath)shape).lineTo(slot.getX() + slot.getW(), slot.getY());
+
+        ((GeneralPath)shape).lineTo( slot.getX() + slot.getW(),slot.getY() + slot.getH());
+
+        ((GeneralPath)shape).lineTo(slot.getX(),slot.getY() + slot.getH());
+
+        ((GeneralPath)shape).closePath();
 
         g.setPaint(Color.GREEN);
         g.setStroke(slot.getStroke());
@@ -25,6 +36,7 @@ public class SlotView {
         //g.fill(getShape());
 
     }
+
 
     public Shape getShape() {
         return shape;

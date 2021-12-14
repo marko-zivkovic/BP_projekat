@@ -10,6 +10,7 @@ public class ActionManager {
     NovaSlikaAction novaSlikaAction;
     BrisanjeCvoraAction brisanjeCvoraAction;
     PravougaonikA pravougaonikA;
+    BojaA bojaA;
 
     public ActionManager() {
         this.newAction = new NewAction();
@@ -19,6 +20,7 @@ public class ActionManager {
         this.novaSlikaAction = new NovaSlikaAction();
         this.brisanjeCvoraAction = new BrisanjeCvoraAction();
         this.pravougaonikA = new PravougaonikA();
+        this.bojaA = new BojaA();
     }
 
     public BrisanjeCvoraAction getBrisanjeCvoraAction() {
@@ -63,5 +65,9 @@ public class ActionManager {
 
     public PravougaonikA getPravougaonikA() {
         return pravougaonikA;
+    }
+
+    public BojaA getBojaA() {
+        return bojaA;
     }
 }

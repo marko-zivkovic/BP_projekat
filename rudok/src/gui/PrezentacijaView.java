@@ -44,6 +44,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
         JToolBar jToolBar = new JToolBar();
         jToolBar.add(actionManager.getPravougaonikA());
+        jToolBar.add(actionManager.getBojaA());
         topPanel.add(jToolBar);
         //this.add(topPanel, BorderLayout.NORTH);
 

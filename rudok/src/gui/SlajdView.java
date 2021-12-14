@@ -8,6 +8,9 @@ import Observer.ISubscriber;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.geom.GeneralPath;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -22,11 +25,18 @@ public class SlajdView extends JPanel implements ISubscriber {
         this.prezz = prez;
 
         prez.addSubscriber(this);
+        slajd.addSubscriber(this);
         this.setPreferredSize(new Dimension(300, 360));
         this.setLayout(new BorderLayout());
         System.out.println(prezz.getSlikatema());
         panel = new ImagePanel(prezz.getSlikatema());
         add(panel, BorderLayout.CENTER);
+
+        for(Slot slot: slajd.getSlotovi()){
+            SlotView sv = new SlotView(slot);
+            sv.paint(null);
+        }
+
 
     }
     class ImagePanel extends JPanel {
@@ -62,13 +72,29 @@ public class SlajdView extends JPanel implements ISubscriber {
             this.revalidate();
             this.repaint();
             System.out.println("USAPOPOPOOOOO)!23123123123123");
+        }}
+
+
+
+                           //MOUSEEVENT
+        private class MouseController extends MouseAdapter {
+
+            public void mousePressed(MouseEvent e) {
+
+                if (e.getButton()==MouseEvent.BUTTON1){
+                    Point position = e.getPoint();
+                    int x = position.x;
+                    int y = position.y;
+                   // GeneralPath gp = new GeneralPath();
+                    Paint fill = new Color(255,255,255);
+
+                    Slot slot = new Slot(new BasicStroke(2f),x,y,50,100,fill);
+                    slajd.getSlotovi().add(slot);
+
+                }
+            }
+
+
         }
 
-        for(Slot slot: slajd.getSlotovi()){
-            SlotView sv = new SlotView(slot);
-            sv.paint(null);
-        }
-
-
-    }
 }

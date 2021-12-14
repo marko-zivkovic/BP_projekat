@@ -15,14 +15,14 @@ public class Slot {
     protected Point position;
     private Paint color;
 
-    public Slot (Stroke st, String ime, int x, int y, int h, int w, Paint p )
+    public Slot (Stroke st, int x, int y, int h, int w, Paint p )
     {
         this.color = p;
         this.h = h;
         this.w = w;
         this.x = x;
         this.y = y;
-        this.name = ime;
+        //this.name = ime;
         this.stroke = st;
         size = new Dimension(w,h);
         position = new Point(x,y);
