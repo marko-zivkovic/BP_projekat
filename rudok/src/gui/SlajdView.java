@@ -4,6 +4,8 @@ import Cvorovi.Prezentacija;
 import Cvorovi.Slajd;
 import Cvorovi.Slot;
 import Observer.ISubscriber;
+import Observer.UpdateEvent;
+import Observer.UpdateListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,7 +17,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SlajdView extends JPanel implements ISubscriber {
+public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
     Slajd slajd;
     Prezentacija prezz;
     ImagePanel panel;
@@ -31,14 +33,18 @@ public class SlajdView extends JPanel implements ISubscriber {
         System.out.println(prezz.getSlikatema());
         panel = new ImagePanel(prezz.getSlikatema());
         add(panel, BorderLayout.CENTER);
+        //SlajdView.addMouseListener(new MouseController());
 
-        for(Slot slot: slajd.getSlotovi()){
-            SlotView sv = new SlotView(slot);
-            sv.paint(null);
-        }
+
 
 
     }
+
+    @Override
+    public void updatePerformed(UpdateEvent e) {
+        repaint();
+    }
+
     class ImagePanel extends JPanel {
 
         //private String slika;
@@ -67,7 +73,14 @@ public class SlajdView extends JPanel implements ISubscriber {
 
             panel.setSlika(((Prezentacija)notification).getSlikatema());
 
-        }else if(notification.equals(slajd)){
+        }
+        else if (notification instanceof Slot){
+
+                SlotView sv = new SlotView(((Slot)notification));
+                sv.paint(null);
+
+        }
+        else if(notification.equals(slajd)){
             this.removeAll();
             this.revalidate();
             this.repaint();
@@ -89,7 +102,8 @@ public class SlajdView extends JPanel implements ISubscriber {
                     Paint fill = new Color(255,255,255);
 
                     Slot slot = new Slot(new BasicStroke(2f),x,y,50,100,fill);
-                    slajd.getSlotovi().add(slot);
+                    slajd.addSlot(slot);
+                    System.out.println("nigggaa");
 
                 }
             }

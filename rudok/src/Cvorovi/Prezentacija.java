@@ -75,39 +75,27 @@ public class Prezentacija implements TreeNode, IPublisher {
     public Slajd getSlajd(int index) {
         return slajdovi.get(index);
     }
-
     public int getSlajdIndex(Slajd slajd) {
         return slajdovi.indexOf(slajd);
     }
-
     public int getSlajdCount() {
         return slajdovi.size();
     }
     public boolean isLeaf() {
         return false;
     }
-
     public void setName(String name){
         this.name=name;
     }
-
-
     public TreeNode getChildAt(int arg0) {
         return getSlajd(arg0);
     }
-
-
     public int getChildCount() {
         return getSlajdCount();
     }
-
-
     public TreeNode getParent() {
         // TODO Auto-generated method stub
-        return null;
-    }
-
-
+        return null;}
     public int getIndex(TreeNode arg0) {
         return getSlajdIndex((Slajd)arg0);
     }
