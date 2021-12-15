@@ -73,6 +73,7 @@ public class MainWindow extends JFrame {
         JToolBar jjToolBar = new JToolBar();
         jjToolBar.add(actionManager.getEditSlotAction());
         jjToolBar.add(actionManager.getSlideShowActuin());
+
         desni.add(jjToolBar,BorderLayout.NORTH);
 
         JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(workspaceTree), desni);

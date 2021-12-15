@@ -13,6 +13,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
     private static final long serialVersionUID = 7445755320045782268L;
     public String novaslika;
+    private Prezentacija pr;
 
     private JPanel topPanel;
     private JLabel autor = new JLabel("Marko Zivkovic");
@@ -23,10 +24,11 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     public PrezentacijaView(Prezentacija prezentacija) {
 
         prezentacija.addSubscriber(this);
+        this.pr = prezentacija;
         this.setLayout(new BorderLayout());
         // panel za toolbar
         this.topPanel = new JPanel();
-        topPanel.add(new JLabel(prezentacija.getName()));
+       // topPanel.add(new JLabel(prezentacija.getName()));
         this.add(topPanel, BorderLayout.NORTH);
 
         autor.setText("Autor: " + prezentacija.getAutor());
@@ -57,13 +59,22 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     public void update(Object notification) {
         if (notification instanceof String && notification.equals("odstupi")) {
             this.removeAll();
-
             MainWindow.getInstance().getMojTabbedPane().removeAll();
+
         } else if(!(notification instanceof String) && !(notification instanceof Slajd)) {
             autor.setText(((Prezentacija) notification).getAutor());
             novaslika = ((Prezentacija) notification).getSlikatema();
 
         }
+        /**else if (notification instanceof Slajd){
+            Slajd s = ((Slajd) notification);
+            SlajdView sv = new SlajdView(s,this.pr);
+            this.centar.add(sv);
+            this.centar.add(Box.createVerticalStrut(10));
+            this.slajdViews.add(sv);
+            this.revalidate();
+            this.repaint();
+        }*/
     }
 
     public JPanel getCentar() {

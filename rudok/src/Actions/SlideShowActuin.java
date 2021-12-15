@@ -10,7 +10,7 @@ public class SlideShowActuin extends AbstractMyAction{
     public SlideShowActuin (){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("color.png"));
+        putValue(SMALL_ICON, loadIcon("ss.jpg"));
         putValue(SHORT_DESCRIPTION, "Slide Show");
     }
     @Override

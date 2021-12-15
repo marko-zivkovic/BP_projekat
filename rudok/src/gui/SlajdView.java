@@ -69,7 +69,7 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
 
     @Override
     public void update(Object notification) {
-        if(notification instanceof String && !notification.equals("odstupi")){
+        if(notification instanceof String && notification.equals("promena")){
 
             panel.setSlika(((Prezentacija)notification).getSlikatema());
 

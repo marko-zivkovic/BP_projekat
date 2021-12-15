@@ -10,7 +10,7 @@ public class EditSlotAction extends AbstractMyAction{
     public EditSlotAction (){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("pen.png"));
+        putValue(SMALL_ICON, loadIcon("ss.jpg"));
         putValue(SHORT_DESCRIPTION, "Edit za slot");
     }
     @Override

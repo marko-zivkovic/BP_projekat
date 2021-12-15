@@ -1,6 +1,7 @@
 package state;
 
 import gui.MainWindow;
+import gui.MojTabbedPane;
 import gui.PrezentacijaView;
 import gui.SlajdView;
 
@@ -12,6 +13,7 @@ import java.awt.event.ActionListener;
 public class StateManager {
 
     private State currentState;
+
     private SlideShowState slideShowState;
     private SlotState slotState;
 
@@ -39,6 +41,7 @@ public class StateManager {
     }
 
     public void setSlideShowState(){
+        MojTabbedPane mtp = MainWindow.getInstance().getMojTabbedPane();
         if(currentState != slideShowState)
         {
             currentState = slideShowState;
@@ -58,10 +61,11 @@ public class StateManager {
             konteiner.add(pred);
             konteiner.add(prikaz);
             konteiner.add(sled);
+
             MainWindow.getInstance().getDesni().add(konteiner,BorderLayout.CENTER);
             int brojac = 0;
             for(SlajdView s: pv.getSlajdViews()){
-                prikaz.add(new JLabel(brojac++ +""),s.getName());
+                prikaz.add(s,s.getName());
             }
             pred.addActionListener(new ActionListener() {
                 @Override
@@ -81,6 +85,14 @@ public class StateManager {
             });
 
         }
+        else{
+            currentState = slotState;
+            MainWindow.getInstance().getDesni().removeAll();
+            MainWindow.getInstance().getDesni().add(mtp);
+            MainWindow.getInstance().getDesni().revalidate();
+            MainWindow.getInstance().getDesni().repaint();
+
+;        }
 
     }
 
