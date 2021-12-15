@@ -2,6 +2,7 @@ package gui;
 
 import Actions.ActionManager;
 import Cvorovi.WorkspaceModel;
+import state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +11,10 @@ public class MainWindow extends JFrame {
 
     private static MainWindow instance = null;
     private ActionManager actionManager = new ActionManager();
+    private StateManager stateManager = new StateManager();
     private WorkspaceTree workspaceTree;
     private MojTabbedPane mojTabbedPane;
+    private JPanel desni = new JPanel();
 
     private MainWindow()
     {
@@ -64,7 +67,15 @@ public class MainWindow extends JFrame {
         workspaceTree.setModel(workspaceModel);
 
         mojTabbedPane = new MojTabbedPane();
-        JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(workspaceTree), mojTabbedPane);
+
+        desni.setLayout(new BorderLayout());
+        desni.add(mojTabbedPane, BorderLayout.CENTER);
+        JToolBar jjToolBar = new JToolBar();
+        jjToolBar.add(actionManager.getEditSlotAction());
+        jjToolBar.add(actionManager.getSlideShowActuin());
+        desni.add(jjToolBar,BorderLayout.NORTH);
+
+        JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(workspaceTree), desni);
         this.getContentPane().add(jSplitPane,BorderLayout.CENTER);
         jSplitPane.setDividerLocation(250);
 
@@ -91,5 +102,13 @@ public class MainWindow extends JFrame {
 
     public void setActionManager(ActionManager actionManager) {
         this.actionManager = actionManager;
+    }
+
+    public StateManager getStateManager() {
+        return stateManager;
+    }
+
+    public JPanel getDesni() {
+        return desni;
     }
 }

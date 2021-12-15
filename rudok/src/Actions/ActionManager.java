@@ -11,6 +11,8 @@ public class ActionManager {
     BrisanjeCvoraAction brisanjeCvoraAction;
     PravougaonikA pravougaonikA;
     BojaA bojaA;
+    EditSlotAction editSlotAction;
+    SlideShowActuin slideShowActuin;
 
     public ActionManager() {
         this.newAction = new NewAction();
@@ -21,6 +23,8 @@ public class ActionManager {
         this.brisanjeCvoraAction = new BrisanjeCvoraAction();
         this.pravougaonikA = new PravougaonikA();
         this.bojaA = new BojaA();
+        this.editSlotAction = new EditSlotAction();
+        this.slideShowActuin = new SlideShowActuin();
     }
 
     public BrisanjeCvoraAction getBrisanjeCvoraAction() {
@@ -69,5 +73,13 @@ public class ActionManager {
 
     public BojaA getBojaA() {
         return bojaA;
+    }
+
+    public EditSlotAction getEditSlotAction() {
+        return editSlotAction;
+    }
+
+    public SlideShowActuin getSlideShowActuin() {
+        return slideShowActuin;
     }
 }

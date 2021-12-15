@@ -7,6 +7,7 @@ import Observer.ISubscriber;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class PrezentacijaView extends JPanel implements ISubscriber {
 
@@ -17,6 +18,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     private JLabel autor = new JLabel("Marko Zivkovic");
     private JPanel centar;
     private ActionManager actionManager = new ActionManager();
+    private ArrayList<SlajdView> slajdViews = new ArrayList<>();
 
     public PrezentacijaView(Prezentacija prezentacija) {
 
@@ -71,6 +73,11 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     public void addSlajdView(SlajdView slideView) {
         this.centar.add(slideView);
         this.centar.add(Box.createVerticalStrut(10));
+        this.slajdViews.add(slideView);
         revalidate();
+    }
+
+    public ArrayList<SlajdView> getSlajdViews() {
+        return slajdViews;
     }
 }

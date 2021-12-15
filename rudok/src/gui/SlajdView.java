@@ -33,7 +33,7 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
         System.out.println(prezz.getSlikatema());
         panel = new ImagePanel(prezz.getSlikatema());
         add(panel, BorderLayout.CENTER);
-        //SlajdView.addMouseListener(new MouseController());
+        this.addMouseListener(new MouseController());
 
 
 
@@ -77,7 +77,7 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
         else if (notification instanceof Slot){
 
                 SlotView sv = new SlotView(((Slot)notification));
-                sv.paint(null);
+               // sv.paint(null);
 
         }
         else if(notification.equals(slajd)){
