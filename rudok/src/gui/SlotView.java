@@ -12,9 +12,6 @@ public class SlotView {
 
     public SlotView (Slot s){
         this.slot = s;
-    }
-
-    public void paint(Graphics2D g){
         shape = new GeneralPath();
         ((GeneralPath)shape).moveTo(slot.getX(),slot.getY());
 
@@ -25,6 +22,9 @@ public class SlotView {
         ((GeneralPath)shape).lineTo(slot.getX(),slot.getY() + slot.getH());
 
         ((GeneralPath)shape).closePath();
+    }
+
+    public void paint(Graphics2D g){
 
         g.setPaint(Color.GREEN);
         g.setStroke(slot.getStroke());
@@ -33,7 +33,7 @@ public class SlotView {
         g.drawRect(slot.getX(), slot.getY(), slot.getW(), slot.getH());
         g.drawString(slot.getName(), slot.getX() + 10, slot.getY() + 10);
 
-        //g.fill(getShape());
+        g.fill(getShape());
 
     }
 

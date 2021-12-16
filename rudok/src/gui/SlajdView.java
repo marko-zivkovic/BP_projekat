@@ -16,6 +16,8 @@ import java.awt.geom.GeneralPath;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
     Slajd slajd;
@@ -33,9 +35,8 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
         System.out.println(prezz.getSlikatema());
         panel = new ImagePanel(prezz.getSlikatema());
         add(panel, BorderLayout.CENTER);
+
         this.addMouseListener(new MouseController());
-
-
 
 
     }
@@ -44,7 +45,7 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
     public void updatePerformed(UpdateEvent e) {
         repaint();
     }
-
+    ////////////imagepanel
     class ImagePanel extends JPanel {
 
         //private String slika;
@@ -66,7 +67,7 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
         }
 
     }
-
+    /////////////imagepanel
     @Override
     public void update(Object notification) {
         if(notification instanceof String && notification.equals("promena")){
@@ -75,21 +76,40 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
 
         }
         else if (notification instanceof Slot){
-
-                SlotView sv = new SlotView(((Slot)notification));
-               // sv.paint(null);
+            this.revalidate();
+            this.repaint();
 
         }
         else if(notification.equals(slajd)){
             this.removeAll();
             this.revalidate();
             this.repaint();
-            System.out.println("USAPOPOPOOOOO)!23123123123123");
+            System.out.println("Obrisan slajd");
         }}
 
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        Graphics2D g2 = (Graphics2D) g;
+
+        //omogucava providnost elemenata prilikom njihovog preklapanja
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
+        ArrayList<Slot> slotovi = slajd.getSlotovi();
+        for(Slot s: slotovi){
+
+            SlotView sv = new SlotView(s);
+            sv.paint(g2);
+
+        }
+
+        System.out.println("Izvršena paintComponent metoda view-a");
+    }
 
 
-                           //MOUSEEVENT
+
+
+
+    //MOUSEEVENT
         private class MouseController extends MouseAdapter {
 
             public void mousePressed(MouseEvent e) {
@@ -98,12 +118,13 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
                     Point position = e.getPoint();
                     int x = position.x;
                     int y = position.y;
-                   // GeneralPath gp = new GeneralPath();
+                    //System.out.println(x+" "+y);
+
                     Paint fill = new Color(255,255,255);
 
                     Slot slot = new Slot(new BasicStroke(2f),x,y,50,100,fill);
                     slajd.addSlot(slot);
-                    System.out.println("nigggaa");
+                    System.out.println("setovan slot");
 
                 }
             }

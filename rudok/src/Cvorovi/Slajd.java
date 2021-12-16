@@ -11,17 +11,12 @@ import java.util.List;
 public class Slajd implements TreeNode, IPublisher {
     private String name;
     private Integer br;
+    //////////////
     private ArrayList<Slot> slotovi = new ArrayList<Slot>();
     List<ISubscriber> subscribers;
 
 
-
-    public Slajd (String Name) {
-        name=Name;
-
-    }
-
-
+    public Slajd (String Name) {name=Name;}
     public String toString(){
         return name;
     }
@@ -58,15 +53,15 @@ public class Slajd implements TreeNode, IPublisher {
     public void setBr(Integer br) {
         this.br = br;
     }
-
+    //////////////
     public void addSlot (Slot s){
         slotovi.add(s);
         notifySubscribers(s);
     }
-
     public ArrayList<Slot> getSlotovi() {
         return slotovi;
     }
+    //////////////
 
     @Override
     public void addSubscriber(ISubscriber sub) {
