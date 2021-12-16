@@ -40,6 +40,7 @@ public class DodajCvorAkcija extends AbstractMyAction{
             Slajd p2 = new Slajd("new slajd");
             ((Prezentacija)p).addSlajd(p2);
             SwingUtilities.updateComponentTreeUI(MainWindow.getInstance().getWorkspaceTree());
+            //((Prezentacija) p).notifySubscribers(p2);
 
         }
 

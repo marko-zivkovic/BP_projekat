@@ -14,6 +14,7 @@ public class MainWindow extends JFrame {
     private StateManager stateManager = new StateManager();
     private WorkspaceTree workspaceTree;
     private MojTabbedPane mojTabbedPane;
+    JToolBar jjToolBar = new JToolBar();
     private JPanel desni = new JPanel();
 
     private MainWindow()
@@ -70,7 +71,7 @@ public class MainWindow extends JFrame {
 
         desni.setLayout(new BorderLayout());
         desni.add(mojTabbedPane, BorderLayout.CENTER);
-        JToolBar jjToolBar = new JToolBar();
+
         jjToolBar.add(actionManager.getEditSlotAction());
         jjToolBar.add(actionManager.getSlideShowActuin());
 
@@ -111,5 +112,9 @@ public class MainWindow extends JFrame {
 
     public JPanel getDesni() {
         return desni;
+    }
+
+    public JToolBar getJjToolBar() {
+        return jjToolBar;
     }
 }

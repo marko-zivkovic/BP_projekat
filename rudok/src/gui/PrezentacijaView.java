@@ -20,10 +20,13 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     private JPanel centar;
     private ActionManager actionManager = new ActionManager();
     private ArrayList<SlajdView> slajdViews = new ArrayList<>();
+    private Prezentacija p;
+    JToolBar jToolBar = new JToolBar();
 
     public PrezentacijaView(Prezentacija prezentacija) {
 
         prezentacija.addSubscriber(this);
+        p = prezentacija;
         this.pr = prezentacija;
         this.setLayout(new BorderLayout());
         // panel za toolbar
@@ -46,13 +49,59 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
         this.setBackground(Color.green);
 
-        JToolBar jToolBar = new JToolBar();
         jToolBar.add(actionManager.getPravougaonikA());
         jToolBar.add(actionManager.getBojaA());
         topPanel.add(jToolBar);
         //this.add(topPanel, BorderLayout.NORTH);
 
 
+    }
+    public void obrisiView(){
+        this.topPanel.removeAll();
+        this.topPanel.revalidate();
+        this.topPanel.repaint();
+
+        this.centar.removeAll();
+        this.centar.revalidate();
+        this.centar.repaint();
+
+        this.jToolBar.removeAll();
+        this.jToolBar.revalidate();
+        this.jToolBar.repaint();
+    }
+    public void mojRepaint(){
+        this.setLayout(new BorderLayout());
+        // panel za toolbar
+        this.topPanel = new JPanel();
+        // topPanel.add(new JLabel(prezentacija.getName()));
+        this.add(topPanel, BorderLayout.NORTH);
+
+        autor.setText("Autor: " + p.getAutor());
+        this.add(autor, BorderLayout.SOUTH);
+        autor.setHorizontalAlignment(SwingConstants.CENTER);
+
+        centar = new JPanel();
+        centar.setLayout(new BoxLayout(centar, BoxLayout.Y_AXIS));
+        //SCROLLPANE kao poseban Pane
+        JScrollPane jsp = new JScrollPane(centar, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+        centar.setBackground(Color.black);
+        this.add(jsp, BorderLayout.CENTER);
+
+        this.setBackground(Color.green);
+
+        JToolBar jToolBar = new JToolBar();
+        jToolBar.add(actionManager.getPravougaonikA());
+        jToolBar.add(actionManager.getBojaA());
+        topPanel.add(jToolBar);
+        for(SlajdView s: slajdViews){
+            this.centar.add(s);
+            this.centar.add(Box.createVerticalStrut(10));
+            revalidate();
+            repaint();
+            System.out.println("usaoooooooooooooooooooooooo");
+        }
     }
 
     @Override
@@ -66,15 +115,15 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
             novaslika = ((Prezentacija) notification).getSlikatema();
 
         }
-        /**else if (notification instanceof Slajd){
-            Slajd s = ((Slajd) notification);
-            SlajdView sv = new SlajdView(s,this.pr);
-            this.centar.add(sv);
-            this.centar.add(Box.createVerticalStrut(10));
-            this.slajdViews.add(sv);
-            this.revalidate();
-            this.repaint();
-        }*/
+//        else if (notification instanceof Slajd){
+//            Slajd s = ((Slajd) notification);
+//            SlajdView sv = new SlajdView(s,this.pr);
+//            this.centar.add(sv);
+//            this.centar.add(Box.createVerticalStrut(10));
+//            this.slajdViews.add(sv);
+//            this.revalidate();
+//            this.repaint();
+//        }
     }
 
     public JPanel getCentar() {

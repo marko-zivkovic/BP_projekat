@@ -88,7 +88,10 @@ public class StateManager {
         else{
             currentState = slotState;
             MainWindow.getInstance().getDesni().removeAll();
-            MainWindow.getInstance().getDesni().add(mtp);
+            MainWindow.getInstance().getDesni().add(mtp,BorderLayout.CENTER);
+            MainWindow.getInstance().getDesni().add(MainWindow.getInstance().getJjToolBar(), BorderLayout.NORTH);
+            ((PrezentacijaView)mtp.getSelectedComponent()).obrisiView();
+            ((PrezentacijaView)mtp.getSelectedComponent()).mojRepaint();
             MainWindow.getInstance().getDesni().revalidate();
             MainWindow.getInstance().getDesni().repaint();
 

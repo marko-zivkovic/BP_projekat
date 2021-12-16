@@ -70,12 +70,11 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
     /////////////imagepanel
     @Override
     public void update(Object notification) {
-        if(notification instanceof String && notification.equals("promena")){
+        if (notification instanceof String && notification.equals("promena")) {
 
-            panel.setSlika(((Prezentacija)notification).getSlikatema());
+            panel.setSlika(((Prezentacija) notification).getSlikatema());
 
-        }
-        else if (notification instanceof Slot){
+        } else if (notification instanceof Slot) {
             this.revalidate();
             this.repaint();
 
@@ -85,7 +84,8 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
             this.revalidate();
             this.repaint();
             System.out.println("Obrisan slajd");
-        }}
+        }
+    }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
