@@ -116,6 +116,22 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
         }
 //        else if (notification instanceof Slajd){
+//            this.centar.repaint();
+//            revalidate();
+//        }
+//        else if (notification instanceof Slajd){
+//            int broj = ((Slajd) notification).getBr();
+//            SlajdView ssv = null;
+//            for(SlajdView sv: slajdViews){
+//                if(sv.getSlajd().getBr() == broj)
+//                       {ssv=sv;}
+//            }
+//            this.slajdViews.remove(ssv);
+//            this.centar.remove(ssv);
+//            centar.repaint();
+//            revalidate();
+//        }
+//        else if (notification instanceof Slajd){
 //            Slajd s = ((Slajd) notification);
 //            SlajdView sv = new SlajdView(s,this.pr);
 //            this.centar.add(sv);

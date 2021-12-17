@@ -23,10 +23,14 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
     Slajd slajd;
     Prezentacija prezz;
     ImagePanel panel;
+    PrezentacijaView prezV;
+    Integer br;
 
-    public SlajdView(Slajd ss, Prezentacija prez) {
+    public SlajdView(Slajd ss, Prezentacija prez, PrezentacijaView pv) {
+        this.prezV = pv;
         this.slajd = ss;
         this.prezz = prez;
+        this.br=ss.getBr();
 
         prez.addSubscriber(this);
         slajd.addSubscriber(this);
@@ -79,12 +83,20 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
             this.repaint();
 
         }
-        else if(notification.equals(slajd)){
+        else if(notification instanceof Slajd){
+            System.out.println("Obrisan slajd");
+            //prezV.getCentar().remove(br);
+           // prezV.getCentar().repaint();
+            //prezV.revalidate();
             this.removeAll();
             this.revalidate();
             this.repaint();
-            System.out.println("Obrisan slajd");
+
         }
+    }
+    public Boolean proveraBroja (Integer b){
+        if(br == b) {return true;}
+        return false;
     }
 
     protected void paintComponent(Graphics g) {
@@ -132,4 +144,7 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
 
         }
 
+    public Slajd getSlajd() {
+        return slajd;
+    }
 }
