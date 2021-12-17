@@ -11,7 +11,7 @@ public class PravougaonikA extends AbstractMyAction{
     public PravougaonikA (){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("p.jpg"));
+        putValue(SMALL_ICON, loadIcon("slike\\p.jpg"));
         putValue(SHORT_DESCRIPTION, "pravougaonik");
     }
     @Override

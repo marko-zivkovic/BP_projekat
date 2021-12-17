@@ -13,6 +13,7 @@ public class ActionManager {
     BojaA bojaA;
     EditSlotAction editSlotAction;
     SlideShowActuin slideShowActuin;
+    DodajCvorAkcijaFactory dodajCvorAkcijaFactory;
 
     public ActionManager() {
         this.newAction = new NewAction();
@@ -25,6 +26,7 @@ public class ActionManager {
         this.bojaA = new BojaA();
         this.editSlotAction = new EditSlotAction();
         this.slideShowActuin = new SlideShowActuin();
+        this.dodajCvorAkcijaFactory = new DodajCvorAkcijaFactory();
     }
 
     public BrisanjeCvoraAction getBrisanjeCvoraAction() {
@@ -81,5 +83,9 @@ public class ActionManager {
 
     public SlideShowActuin getSlideShowActuin() {
         return slideShowActuin;
+    }
+
+    public DodajCvorAkcijaFactory getDodajCvorAkcijaFactory() {
+        return dodajCvorAkcijaFactory;
     }
 }

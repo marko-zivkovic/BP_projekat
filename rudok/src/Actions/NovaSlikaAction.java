@@ -13,7 +13,7 @@ public class NovaSlikaAction extends AbstractMyAction{
     public NovaSlikaAction (){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("slka.png"));
+        putValue(SMALL_ICON, loadIcon("slike\\slka.png"));
         putValue(SHORT_DESCRIPTION, "promeni sliku");
     }
 

@@ -4,40 +4,40 @@ import Cvorovi.Prezentacija;
 import Cvorovi.Projekat;
 import Cvorovi.Slajd;
 import Cvorovi.Workspace;
-import gui.AboutInfo;
+import factory.FactorySlot;
 import gui.MainWindow;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.beans.PropertyVetoException;
 
-public class DodajCvorAkcija extends AbstractMyAction{
-
-    public DodajCvorAkcija(){
+public class DodajCvorAkcijaFactory extends AbstractMyAction{
+    public DodajCvorAkcijaFactory(){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
         putValue(SMALL_ICON, loadIcon("slike\\plus.png"));
-        putValue(SHORT_DESCRIPTION, "dodaj cvor 1");
+        putValue(SHORT_DESCRIPTION, "dodaj cvor Factory");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object p = MainWindow.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+        FactorySlot fs = new FactorySlot();
+
         if (p  instanceof Workspace) {
-            Projekat pp = new Projekat("New pro");
+            Projekat pp = (Projekat) fs.Napravi("projekat");
             ((Workspace)p).addProject(pp);
             SwingUtilities.updateComponentTreeUI(MainWindow.getInstance().getWorkspaceTree());
 
 
         }else if(p instanceof Projekat){
-            Prezentacija p1 = new Prezentacija("new prez");
+            Prezentacija p1 = (Prezentacija) fs.Napravi("prezentacija");
             ((Projekat)p).addPrezentacija(p1);
             SwingUtilities.updateComponentTreeUI(MainWindow.getInstance().getWorkspaceTree());
 
         }
         else if(p instanceof Prezentacija){
-            Slajd p2 = new Slajd("new slajd");
+            Slajd p2 = (Slajd) fs.Napravi("slajd");
             ((Prezentacija)p).addSlajd(p2);
             SwingUtilities.updateComponentTreeUI(MainWindow.getInstance().getWorkspaceTree());
             //((Prezentacija) p).notifySubscribers(p2);

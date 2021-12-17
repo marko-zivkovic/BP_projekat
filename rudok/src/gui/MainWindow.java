@@ -56,6 +56,7 @@ public class MainWindow extends JFrame {
         JToolBar jToolBar = new JToolBar();
         jToolBar.add(actionManager.getNewAction());
         jToolBar.add(actionManager.getDodajCvorAkcija());
+        jToolBar.add(actionManager.getDodajCvorAkcijaFactory());
         jToolBar.add(actionManager.getBrisanjeCvoraAction());
         jToolBar.add(actionManager.getRenameAutorAction());
         jToolBar.add(actionManager.getNovaSlikaAction());

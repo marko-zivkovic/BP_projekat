@@ -9,7 +9,7 @@ public class NewAction extends AbstractMyAction{
     public NewAction (){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("new.png"));
+        putValue(SMALL_ICON, loadIcon("slike\\new.png"));
         putValue(SHORT_DESCRIPTION, "new");
     }
 
