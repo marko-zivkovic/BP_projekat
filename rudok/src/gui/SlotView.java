@@ -9,9 +9,11 @@ public class SlotView {
 
     private Slot slot;
     private Shape shape;
+    private Paint boja;
 
     public SlotView (Slot s){
         this.slot = s;
+        this.boja = s.getColor();
         shape = new GeneralPath();
         ((GeneralPath)shape).moveTo(slot.getX(),slot.getY());
 
@@ -29,7 +31,7 @@ public class SlotView {
         g.setPaint(Color.GREEN);
         g.setStroke(slot.getStroke());
         g.draw(getShape());
-        g.setPaint(slot.getColor());
+        g.setPaint(boja);
         g.drawRect(slot.getX(), slot.getY(), slot.getW(), slot.getH());
         g.drawString(slot.getName(), slot.getX() + 10, slot.getY() + 10);
 

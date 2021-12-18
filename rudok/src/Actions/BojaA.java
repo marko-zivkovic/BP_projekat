@@ -1,6 +1,10 @@
 package Actions;
 
+import Cvorovi.Prezentacija;
 import gui.AboutInfo;
+import gui.MainWindow;
+import gui.PrezentacijaView;
+import gui.SlajdView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +23,9 @@ public class BojaA extends  AbstractMyAction{
     public void actionPerformed(ActionEvent e) {
 
         JColorChooser c = new JColorChooser();
-        Color color = JColorChooser.showDialog(null,"Izaberi boju", Color.black);
+        Paint color = JColorChooser.showDialog(null,"Izaberi boju", Color.black);
+        for (SlajdView s:((PrezentacijaView) MainWindow.getInstance().getMojTabbedPane().getSelectedComponent()).getSlajdViews()){
+            s.setFill(color);
+        }
     }
 }

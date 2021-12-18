@@ -15,9 +15,9 @@ public class Slot {
     protected Point position;
     private Paint color;
 
-    public Slot (Stroke st, int x, int y, int h, int w, Paint p )
+    public Slot (Stroke st, int x, int y, int h, int w,Paint fill)
     {
-        this.color = p;
+        this.color = fill;
         this.h = h;
         this.w = w;
         this.x = x;

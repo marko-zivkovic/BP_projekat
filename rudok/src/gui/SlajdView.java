@@ -25,12 +25,16 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
     ImagePanel panel;
     PrezentacijaView prezV;
     Integer br;
+    Paint fill;
+    BasicStroke bs;
 
     public SlajdView(Slajd ss, Prezentacija prez) {
 
         this.slajd = ss;
         this.prezz = prez;
         this.br=ss.getBr();
+        fill = new Color(255,255,255);
+        bs = new BasicStroke(4);
 
         prezz.addSubscriber(this);
         slajd.addSubscriber(this);
@@ -119,6 +123,7 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
 
 
     //MOUSEEVENT
+
         private class MouseController extends MouseAdapter {
 
             public void mousePressed(MouseEvent e) {
@@ -129,9 +134,7 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
                     int y = position.y;
                     //System.out.println(x+" "+y);
 
-                    Paint fill = new Color(255,255,255);
-
-                    Slot slot = new Slot(new BasicStroke(2f),x,y,50,100,fill);
+                    Slot slot = new Slot(bs,x,y,50,100,fill);
                     slajd.addSlot(slot);
                     System.out.println("setovan slot");
 
@@ -140,6 +143,14 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
 
 
         }
+
+    public void setFill(Paint fill) {
+        this.fill = fill;
+    }
+
+    public void setBs(Integer i) {
+        this.bs = new BasicStroke(i);
+    }
 
     public Slajd getSlajd() {
         return slajd;
