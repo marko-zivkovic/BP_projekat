@@ -11,7 +11,7 @@ public class BojaA extends  AbstractMyAction{
     public BojaA (){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("slike\\color.png"));
+        putValue(SMALL_ICON, loadIcon("slike/color.png"));
         putValue(SHORT_DESCRIPTION, "izaberi boju");
     }
 
