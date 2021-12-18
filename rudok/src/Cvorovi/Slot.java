@@ -26,6 +26,7 @@ public class Slot {
         this.stroke = st;
         size = new Dimension(w,h);
         position = new Point(x,y);
+        this.name = "Slot";
 
     }
 

@@ -15,7 +15,7 @@ public class DodajCvorAkcijaFactory extends AbstractMyAction{
     public DodajCvorAkcijaFactory(){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("slike\\plus.png"));
+        putValue(SMALL_ICON, loadIcon("slike/plus.png"));
         putValue(SHORT_DESCRIPTION, "dodaj cvor Factory");
     }
 

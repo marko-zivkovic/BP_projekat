@@ -18,7 +18,7 @@ public class BrisanjeCvoraAction extends AbstractMyAction{
     public BrisanjeCvoraAction (){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("slike\\brisi.png"));
+        putValue(SMALL_ICON, loadIcon("slike/brisi.png"));
         putValue(SHORT_DESCRIPTION, "ukloni");
     }
 

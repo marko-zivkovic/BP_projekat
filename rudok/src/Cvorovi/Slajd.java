@@ -56,7 +56,7 @@ public class Slajd implements TreeNode, IPublisher {
     //////////////
     public void addSlot (Slot s){
         slotovi.add(s);
-        notifySubscribers(s);
+        notifySubscribers(this);
     }
     public ArrayList<Slot> getSlotovi() {
         return slotovi;

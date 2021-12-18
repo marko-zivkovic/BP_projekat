@@ -47,7 +47,7 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
 
     @Override
     public void updatePerformed(UpdateEvent e) {
-        repaint();
+
     }
     ////////////imagepanel
     class ImagePanel extends JPanel {
@@ -101,6 +101,7 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        this.panel.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
 
