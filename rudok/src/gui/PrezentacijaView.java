@@ -21,6 +21,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     private ActionManager actionManager = new ActionManager();
     private ArrayList<SlajdView> slajdViews = new ArrayList<>();
     private Prezentacija p;
+    private JPanel levo;
     JToolBar jToolBar = new JToolBar();
 
     public PrezentacijaView(Prezentacija prezentacija) {
@@ -37,15 +38,22 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         autor.setText("Autor: " + prezentacija.getAutor());
         this.add(autor, BorderLayout.SOUTH);
         autor.setHorizontalAlignment(SwingConstants.CENTER);
+        levo = new JPanel();
+        levo.setLayout(new BoxLayout(levo, BoxLayout.Y_AXIS));
+        //levo.setPreferredSize(new Dimension(170,300));
 
         centar = new JPanel();
         centar.setLayout(new BoxLayout(centar, BoxLayout.Y_AXIS));
         //SCROLLPANE kao poseban Pane
         JScrollPane jsp = new JScrollPane(centar, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane jsp2 = new JScrollPane(levo, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jsp2.setPreferredSize(new Dimension(170,300));
 
         centar.setBackground(Color.black);
         this.add(jsp, BorderLayout.CENTER);
+        this.add(jsp2, BorderLayout.WEST);
 
         this.setBackground(Color.green);
 
@@ -100,7 +108,6 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
             this.centar.add(Box.createVerticalStrut(10));
             revalidate();
             repaint();
-            System.out.println("usaoooooooooooooooooooooooo");
         }
     }
 
@@ -147,9 +154,15 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     }
 
     public void addSlajdView(SlajdView slideView) {
+        SlajdView sv = new SlajdView(slideView.getSlajd(),pr);
+        //sv.setMaximumSize(new Dimension(20,50));
         this.centar.add(slideView);
         this.centar.add(Box.createVerticalStrut(10));
         this.slajdViews.add(slideView);
+
+        this.levo.add(sv);
+        this.levo.add(Box.createVerticalStrut(20));
+
         revalidate();
     }
 

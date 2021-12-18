@@ -34,7 +34,7 @@ public class MainWindow extends JFrame {
         Dimension screenD = tk.getScreenSize();
         int visina = screenD.height;
         int sirina = screenD.width;
-        setSize((sirina/2)+100,(visina/2)+200);
+        setSize((sirina/2)+350,(visina/2)+250);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
 
@@ -80,7 +80,7 @@ public class MainWindow extends JFrame {
 
         JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(workspaceTree), desni);
         this.getContentPane().add(jSplitPane,BorderLayout.CENTER);
-        jSplitPane.setDividerLocation(250);
+        jSplitPane.setDividerLocation(220);
 
         setVisible(true);
 

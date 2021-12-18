@@ -26,13 +26,13 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
     PrezentacijaView prezV;
     Integer br;
 
-    public SlajdView(Slajd ss, Prezentacija prez, PrezentacijaView pv) {
-        this.prezV = pv;
+    public SlajdView(Slajd ss, Prezentacija prez) {
+
         this.slajd = ss;
         this.prezz = prez;
         this.br=ss.getBr();
 
-        prez.addSubscriber(this);
+        prezz.addSubscriber(this);
         slajd.addSubscriber(this);
         this.setPreferredSize(new Dimension(300, 360));
         this.setLayout(new BorderLayout());
@@ -93,10 +93,6 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
             this.repaint();
 
         }
-    }
-    public Boolean proveraBroja (Integer b){
-        if(br == b) {return true;}
-        return false;
     }
 
     protected void paintComponent(Graphics g) {
