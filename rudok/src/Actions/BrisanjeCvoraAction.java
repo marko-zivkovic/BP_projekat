@@ -4,6 +4,7 @@ import Cvorovi.Prezentacija;
 import Cvorovi.Projekat;
 import Cvorovi.Slajd;
 import Cvorovi.Workspace;
+import factory.FactoryError;
 import gui.MainWindow;
 import gui.PrezentacijaView;
 import gui.WorkspaceTree;
@@ -25,6 +26,9 @@ public class BrisanjeCvoraAction extends AbstractMyAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         Object p = MainWindow.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+        if(p instanceof Workspace){
+            FactoryError.getInstance().generateError("workspace");
+        }
          if(p instanceof Projekat){
              WorkspaceTree wst = MainWindow.getInstance().getWorkspaceTree();
              Workspace workspace = (Workspace) wst.getModel().getRoot();

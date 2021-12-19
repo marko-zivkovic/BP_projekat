@@ -1,6 +1,7 @@
 package Actions;
 
 import Cvorovi.Prezentacija;
+import factory.FactoryError;
 import gui.MainWindow;
 import gui.PrezentacijaView;
 import gui.SlajdView;
@@ -43,8 +44,14 @@ public class VelicinaStrokeA extends AbstractMyAction{
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                for (SlajdView s:((PrezentacijaView) MainWindow.getInstance().getMojTabbedPane().getSelectedComponent()).getSlajdViews()){
-                    s.setBs(Integer.valueOf(text.getText()));
+
+                try {
+                    for (SlajdView s:((PrezentacijaView) MainWindow.getInstance().getMojTabbedPane().getSelectedComponent()).getSlajdViews()){
+                        s.setBs(Integer.valueOf(text.getText()));
+                    }
+                }
+                catch(Exception ex) {
+                    FactoryError.getInstance().generateError("slovo");
                 }
 
 

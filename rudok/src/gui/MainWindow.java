@@ -2,12 +2,15 @@ package gui;
 
 import Actions.ActionManager;
 import Cvorovi.WorkspaceModel;
+import Observer.ISubscriber;
+import factory.FactoryError;
+import factory.MyError;
 import state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MainWindow extends JFrame {
+public class MainWindow extends JFrame implements ISubscriber {
 
     private static MainWindow instance = null;
     private ActionManager actionManager = new ActionManager();
@@ -16,6 +19,7 @@ public class MainWindow extends JFrame {
     private MojTabbedPane mojTabbedPane;
     JToolBar jjToolBar = new JToolBar();
     private JPanel desni = new JPanel();
+    private FactoryError ferror;
 
     private MainWindow()
     {
@@ -37,6 +41,8 @@ public class MainWindow extends JFrame {
         setSize((sirina/2)+350,(visina/2)+250);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
+        ferror = FactoryError.getInstance();
+        ferror.addSubscriber(this);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -117,5 +123,12 @@ public class MainWindow extends JFrame {
 
     public JToolBar getJjToolBar() {
         return jjToolBar;
+    }
+
+    @Override
+    public void update(Object notification) {
+        if(notification instanceof MyError){
+            ((MyError) notification).IspisiPoruku();
+        }
     }
 }

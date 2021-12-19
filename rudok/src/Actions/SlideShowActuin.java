@@ -1,5 +1,6 @@
 package Actions;
 
+import factory.FactoryError;
 import gui.MainWindow;
 
 import javax.swing.*;
@@ -15,6 +16,11 @@ public class SlideShowActuin extends AbstractMyAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainWindow.getInstance().getStateManager().setSlideShowState();
+        try {
+            MainWindow.getInstance().getStateManager().setSlideShowState();
+        }
+        catch(Exception ex) {
+            FactoryError.getInstance().generateError("slideshow");
+        }
     }
 }
