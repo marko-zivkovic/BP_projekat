@@ -4,10 +4,6 @@ import Cvorovi.Prezentacija;
 import Cvorovi.Slajd;
 import Cvorovi.Slot;
 import Observer.ISubscriber;
-import Observer.UpdateEvent;
-import Observer.UpdateListener;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -19,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
+public class SlajdView extends JPanel implements ISubscriber {
     Slajd slajd;
     Prezentacija prezz;
     ImagePanel panel;
@@ -49,10 +45,6 @@ public class SlajdView extends JPanel implements ISubscriber, UpdateListener {
 
     }
 
-    @Override
-    public void updatePerformed(UpdateEvent e) {
-
-    }
     ////////////imagepanel
     class ImagePanel extends JPanel {
 

@@ -15,6 +15,6 @@ public class EditSlotAction extends AbstractMyAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainWindow.getInstance().getStateManager().setSlotState();
+        MainWindow.getInstance().getStateManager().getSlotState();
     }
 }

@@ -81,6 +81,7 @@ public class MainWindow extends JFrame implements ISubscriber {
 
         jjToolBar.add(actionManager.getEditSlotAction());
         jjToolBar.add(actionManager.getSlideShowActuin());
+        jjToolBar.add(actionManager.getEditSlajdAction());
 
         desni.add(jjToolBar,BorderLayout.NORTH);
 

@@ -15,6 +15,7 @@ public class ActionManager {
     SlideShowActuin slideShowActuin;
     DodajCvorAkcijaFactory dodajCvorAkcijaFactory;
     VelicinaStrokeA velicinaStrokeA;
+    EditSlajdAction editSlajdAction;
 
     public ActionManager() {
         this.newAction = new NewAction();
@@ -29,6 +30,7 @@ public class ActionManager {
         this.slideShowActuin = new SlideShowActuin();
         this.dodajCvorAkcijaFactory = new DodajCvorAkcijaFactory();
         this.velicinaStrokeA = new VelicinaStrokeA();
+        this.editSlajdAction = new EditSlajdAction();
     }
 
     public BrisanjeCvoraAction getBrisanjeCvoraAction() {
@@ -93,5 +95,9 @@ public class ActionManager {
 
     public VelicinaStrokeA getVelicinaStrokeA() {
         return velicinaStrokeA;
+    }
+
+    public EditSlajdAction getEditSlajdAction() {
+        return editSlajdAction;
     }
 }

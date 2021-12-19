@@ -2,6 +2,10 @@ package Actions;
 
 import factory.FactoryError;
 import gui.MainWindow;
+import gui.MojTabbedPane;
+import state.SlideEditorState;
+import state.SlideShowState;
+import state.SlotState;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,8 +20,9 @@ public class SlideShowActuin extends AbstractMyAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        MojTabbedPane mtp = MainWindow.getInstance().getMojTabbedPane();
         try {
-            MainWindow.getInstance().getStateManager().setSlideShowState();
+            MainWindow.getInstance().getStateManager().getSlideShowState().setSlideShowState(mtp);
         }
         catch(Exception ex) {
             FactoryError.getInstance().generateError("slideshow");

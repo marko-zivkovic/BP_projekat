@@ -32,7 +32,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         this.setLayout(new BorderLayout());
         // panel za toolbar
         this.topPanel = new JPanel();
-       // topPanel.add(new JLabel(prezentacija.getName()));
+       topPanel.add(new JLabel("Akcije za promenu slotova ->"));
         this.add(topPanel, BorderLayout.NORTH);
 
         autor.setText("Autor: " + prezentacija.getAutor());
@@ -40,7 +40,6 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         autor.setHorizontalAlignment(SwingConstants.CENTER);
         levo = new JPanel();
         levo.setLayout(new BoxLayout(levo, BoxLayout.Y_AXIS));
-        //levo.setPreferredSize(new Dimension(170,300));
 
         centar = new JPanel();
         centar.setLayout(new BoxLayout(centar, BoxLayout.Y_AXIS));
@@ -78,40 +77,6 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         this.jToolBar.revalidate();
         this.jToolBar.repaint();
     }
-    public void mojRepaint(){
-        this.setLayout(new BorderLayout());
-        // panel za toolbar
-        this.topPanel = new JPanel();
-        // topPanel.add(new JLabel(prezentacija.getName()));
-        this.add(topPanel, BorderLayout.NORTH);
-
-        autor.setText("Autor: " + p.getAutor());
-        this.add(autor, BorderLayout.SOUTH);
-        autor.setHorizontalAlignment(SwingConstants.CENTER);
-
-        centar = new JPanel();
-        centar.setLayout(new BoxLayout(centar, BoxLayout.Y_AXIS));
-        //SCROLLPANE kao poseban Pane
-        JScrollPane jsp = new JScrollPane(centar, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-        centar.setBackground(Color.black);
-        this.add(jsp, BorderLayout.CENTER);
-
-        this.setBackground(Color.green);
-
-        JToolBar jToolBar = new JToolBar();
-        jToolBar.add(actionManager.getPravougaonikA());
-        jToolBar.add(actionManager.getBojaA());
-        topPanel.add(jToolBar);
-        for(SlajdView s: slajdViews){
-            this.centar.add(s);
-            this.centar.add(Box.createVerticalStrut(10));
-            revalidate();
-            repaint();
-        }
-    }
-
     @Override
     public void update(Object notification) {
         if (notification instanceof String && notification.equals("odstupi")) {
@@ -156,7 +121,9 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
     public void addSlajdView(SlajdView slideView) {
         SlajdView sv = new SlajdView(slideView.getSlajd(),pr);
-        //sv.setMaximumSize(new Dimension(20,50));
+        sv.setMaximumSize(new Dimension(130,70));
+        sv.setMinimumSize(new Dimension(130,70));
+        sv.setPreferredSize(new Dimension(130,70));
         this.centar.add(slideView);
         this.centar.add(Box.createVerticalStrut(10));
         this.slajdViews.add(slideView);
