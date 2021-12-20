@@ -21,6 +21,7 @@ public class StateManager {
         slideShowState = new SlideShowState();
         slotState = new SlotState();
         slideEditorState = new SlideEditorState();
+        currentState = slideShowState;
     }
 
 
@@ -28,15 +29,14 @@ public class StateManager {
         return currentState;
     }
 
-    public SlideShowState getSlideShowState() {
-        return slideShowState;
+    public void setSlideEditorState() {
+        this.currentState = slideEditorState;
+    }
+    public void setSlideShow() {
+        this.currentState = slideShowState;
+    }
+    public void setSlotState() {
+        this.currentState = slotState;
     }
 
-    public SlideEditorState getSlideEditorState() {
-        return slideEditorState;
-    }
-
-    public SlotState getSlotState() {
-        return slotState;
-    }
 }

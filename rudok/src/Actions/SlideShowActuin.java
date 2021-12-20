@@ -3,6 +3,7 @@ package Actions;
 import factory.FactoryError;
 import gui.MainWindow;
 import gui.MojTabbedPane;
+import gui.PrezentacijaView;
 import state.SlideEditorState;
 import state.SlideShowState;
 import state.SlotState;
@@ -20,9 +21,9 @@ public class SlideShowActuin extends AbstractMyAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        MojTabbedPane mtp = MainWindow.getInstance().getMojTabbedPane();
+        PrezentacijaView pv = (PrezentacijaView) MainWindow.getInstance().getMojTabbedPane().getSelectedComponent();
         try {
-            MainWindow.getInstance().getStateManager().getSlideShowState().setSlideShowState(mtp);
+            pv.startSlideShow();
         }
         catch(Exception ex) {
             FactoryError.getInstance().generateError("slideshow");

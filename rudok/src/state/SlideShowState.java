@@ -12,26 +12,27 @@ import java.awt.event.ActionListener;
 
 public class SlideShowState implements State{
     @Override
-    public void setSlideShowState(MojTabbedPane mtp) {
+    public void setSlideShowState(PrezentacijaView pvv) {
 
-        PrezentacijaView pv = (PrezentacijaView) MainWindow.getInstance().getMojTabbedPane().getSelectedComponent();
+        PrezentacijaView pv = pvv;
 
-        MainWindow.getInstance().getDesni().remove(MainWindow.getInstance().getMojTabbedPane());
-        MainWindow.getInstance().getDesni().revalidate();
-        MainWindow.getInstance().getDesni().repaint();
+        pvv.getCentar().removeAll();
+        pvv.getCentar().revalidate();
+        pvv.getCentar().repaint();
+
         JPanel konteiner = new JPanel();
         JButton pred = new JButton("<");
         JButton sled = new JButton(">");
         JPanel prikaz = new JPanel();
         CardLayout cl = new CardLayout();
-        prikaz.setPreferredSize(new Dimension(900,500));
+        prikaz.setPreferredSize(new Dimension(800,500));
         prikaz.setLayout(cl);
         konteiner.setLayout(new FlowLayout());
         konteiner.add(pred);
         konteiner.add(prikaz);
         konteiner.add(sled);
 
-        MainWindow.getInstance().getDesni().add(konteiner,BorderLayout.CENTER);
+        pvv.getCentar().add(konteiner, BorderLayout.CENTER);
         for(SlajdView s: pv.getSlajdViews()){
             prikaz.add(s,s.getName());
         }
@@ -39,16 +40,17 @@ public class SlideShowState implements State{
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.previous(prikaz);
-                MainWindow.getInstance().getDesni().revalidate();
-                MainWindow.getInstance().getDesni().repaint();
+                pvv.getCentar().revalidate();
+                pvv.getCentar().repaint();
             }
         });
         sled.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.next(prikaz);
-                MainWindow.getInstance().getDesni().revalidate();
-                MainWindow.getInstance().getDesni().repaint();
+                pvv.getCentar().revalidate();
+                pvv.getCentar().repaint();
+//
             }
         });
 

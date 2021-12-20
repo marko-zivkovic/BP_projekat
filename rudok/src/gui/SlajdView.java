@@ -19,7 +19,6 @@ public class SlajdView extends JPanel implements ISubscriber {
     Slajd slajd;
     Prezentacija prezz;
     ImagePanel panel;
-    PrezentacijaView prezV;
     Integer br;
     Paint fill;
     BasicStroke bs;
@@ -81,9 +80,6 @@ public class SlajdView extends JPanel implements ISubscriber {
         }
         else if(notification instanceof Slajd){
             System.out.println("Obrisan slajd");
-            //prezV.getCentar().remove(br);
-           // prezV.getCentar().repaint();
-            //prezV.revalidate();
             this.removeAll();
             this.revalidate();
             this.repaint();

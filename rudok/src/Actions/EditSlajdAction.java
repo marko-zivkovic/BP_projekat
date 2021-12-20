@@ -2,6 +2,7 @@ package Actions;
 
 import gui.MainWindow;
 import gui.MojTabbedPane;
+import gui.PrezentacijaView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +17,7 @@ public class EditSlajdAction extends AbstractMyAction{
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            MojTabbedPane mtp = MainWindow.getInstance().getMojTabbedPane();
-            MainWindow.getInstance().getStateManager().getSlideEditorState().setSlideShowState(mtp);
+            PrezentacijaView pv = (PrezentacijaView) MainWindow.getInstance().getMojTabbedPane().getSelectedComponent();
+            pv.endSlideShow();
         }
 }

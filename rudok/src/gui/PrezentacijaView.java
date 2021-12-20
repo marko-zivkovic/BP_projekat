@@ -4,6 +4,8 @@ import Actions.ActionManager;
 import Cvorovi.Prezentacija;
 import Cvorovi.Slajd;
 import Observer.ISubscriber;
+import state.State;
+import state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,15 +16,18 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     private static final long serialVersionUID = 7445755320045782268L;
     public String novaslika;
     private Prezentacija pr;
+    private StateManager stateManager;
 
     private JPanel topPanel;
+    private JPanel statePanel;
     private JLabel autor = new JLabel("Marko Zivkovic");
     private JPanel centar;
     private ActionManager actionManager = new ActionManager();
     private ArrayList<SlajdView> slajdViews = new ArrayList<>();
     private Prezentacija p;
     private JPanel levo;
-    JToolBar jToolBar = new JToolBar(null, JToolBar.VERTICAL);
+    JToolBar jToolBar = new JToolBar("slot", JToolBar.VERTICAL);
+    JToolBar jj = new JToolBar("state", JToolBar.HORIZONTAL);
 
     public PrezentacijaView(Prezentacija prezentacija) {
 
@@ -30,10 +35,12 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         p = prezentacija;
         this.pr = prezentacija;
         this.setLayout(new BorderLayout());
+        this.stateManager = new StateManager();
         // panel za toolbar
         this.topPanel = new JPanel();
-       //topPanel.add(new JLabel("Akcije za promenu slotova ->"));
+        this.statePanel = new JPanel();
         this.add(topPanel, BorderLayout.EAST);
+        this.add(statePanel, BorderLayout.NORTH);
 
         autor.setText("Autor: " + prezentacija.getAutor());
         this.add(autor, BorderLayout.SOUTH);
@@ -60,22 +67,13 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         jToolBar.add(actionManager.getBojaA());
         jToolBar.add(actionManager.getVelicinaStrokeA());
         topPanel.add(jToolBar);
-    
+        jj.add(actionManager.getSlideShowActuin());
+        jj.add(actionManager.getEditSlajdAction());
+        jj.add(actionManager.getStartState());
+        statePanel.add(jj);
 
 
-    }
-    public void obrisiView(){
-        this.topPanel.removeAll();
-        this.topPanel.revalidate();
-        this.topPanel.repaint();
 
-        this.centar.removeAll();
-        this.centar.revalidate();
-        this.centar.repaint();
-
-        this.jToolBar.removeAll();
-        this.jToolBar.revalidate();
-        this.jToolBar.repaint();
     }
     @Override
     public void update(Object notification) {
@@ -118,14 +116,17 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     public JPanel getCentar() {
         return centar;
     }
+    public JPanel getLevo(){return levo;}
 
     public void addSlajdView(SlajdView slideView) {
         SlajdView sv = new SlajdView(slideView.getSlajd(),pr);
         sv.setMaximumSize(new Dimension(130,70));
         sv.setMinimumSize(new Dimension(130,70));
         sv.setPreferredSize(new Dimension(130,70));
+
         this.centar.add(slideView);
         this.centar.add(Box.createVerticalStrut(10));
+
         this.slajdViews.add(slideView);
 
         this.levo.add(sv);
@@ -136,5 +137,15 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
     public ArrayList<SlajdView> getSlajdViews() {
         return slajdViews;
+    }
+
+    public void startSlideShow(){this.stateManager.setSlideShow();}
+    public void endSlideShow(){this.stateManager.setSlideEditorState();}
+    public void Start(){
+        this.stateManager.getCurrentState().setSlideShowState(this);
+    }
+
+    public Prezentacija getPr() {
+        return pr;
     }
 }

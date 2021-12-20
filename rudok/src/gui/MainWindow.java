@@ -17,7 +17,6 @@ public class MainWindow extends JFrame implements ISubscriber {
     private StateManager stateManager = new StateManager();
     private WorkspaceTree workspaceTree;
     private MojTabbedPane mojTabbedPane;
-    JToolBar jjToolBar = new JToolBar();
     private JPanel desni = new JPanel();
     private FactoryError ferror;
 
@@ -38,7 +37,7 @@ public class MainWindow extends JFrame implements ISubscriber {
         Dimension screenD = tk.getScreenSize();
         int visina = screenD.height;
         int sirina = screenD.width;
-        setSize((sirina/2)+350,(visina/2)+250);
+        setSize((sirina/2)+450,(visina/2)+250);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
         ferror = FactoryError.getInstance();
@@ -79,11 +78,6 @@ public class MainWindow extends JFrame implements ISubscriber {
         desni.setLayout(new BorderLayout());
         desni.add(mojTabbedPane, BorderLayout.CENTER);
 
-        jjToolBar.add(actionManager.getEditSlotAction());
-        jjToolBar.add(actionManager.getSlideShowActuin());
-        jjToolBar.add(actionManager.getEditSlajdAction());
-
-        desni.add(jjToolBar,BorderLayout.NORTH);
 
         JSplitPane jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(workspaceTree), desni);
         this.getContentPane().add(jSplitPane,BorderLayout.CENTER);
@@ -120,10 +114,6 @@ public class MainWindow extends JFrame implements ISubscriber {
 
     public JPanel getDesni() {
         return desni;
-    }
-
-    public JToolBar getJjToolBar() {
-        return jjToolBar;
     }
 
     @Override
