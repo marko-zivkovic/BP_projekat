@@ -26,6 +26,7 @@ public class FactoryError implements IPublisher {
         if(s.equals("workspace")){merror = new MyError("Ne mozete izbrisati Workspace.");}
         if(s.equals("slovo")){merror = new MyError("Morate upisati broj.");}
         if(s.equals("slideshow")){merror = new MyError("Niste napravili prezentaciju sa slajdovima, ne mozete pozvati SlideShow.");}
+        if(s.equals("imageprez")){merror = new MyError("Morate selektovati prezentaciju.");}
         this.notifySubscribers(merror);
 
     }

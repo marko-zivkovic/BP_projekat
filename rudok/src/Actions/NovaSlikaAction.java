@@ -2,6 +2,7 @@ package Actions;
 
 import Controller.FileChooser;
 import Cvorovi.Prezentacija;
+import factory.FactoryError;
 import gui.MainWindow;
 
 import javax.swing.*;
@@ -37,6 +38,8 @@ public class NovaSlikaAction extends AbstractMyAction{
                 System.out.println(((Prezentacija) p).getSlikatema() + " ----");
 
             }
+            else {
+                FactoryError.getInstance().generateError("imageprez");}
 
         }
 

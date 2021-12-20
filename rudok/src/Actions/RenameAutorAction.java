@@ -1,6 +1,7 @@
 package Actions;
 
 import Cvorovi.Prezentacija;
+import factory.FactoryError;
 import gui.AboutInfo;
 import gui.MainWindow;
 
@@ -48,6 +49,8 @@ public class RenameAutorAction extends AbstractMyAction{
                     System.out.println(((Prezentacija) p).getAutor());
 
                 }
+                else {
+                    FactoryError.getInstance().generateError("imageprez");}
             }
         });
 
