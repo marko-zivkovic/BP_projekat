@@ -22,7 +22,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
     private ArrayList<SlajdView> slajdViews = new ArrayList<>();
     private Prezentacija p;
     private JPanel levo;
-    JToolBar jToolBar = new JToolBar();
+    JToolBar jToolBar = new JToolBar(null, JToolBar.VERTICAL);
 
     public PrezentacijaView(Prezentacija prezentacija) {
 
@@ -32,8 +32,8 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         this.setLayout(new BorderLayout());
         // panel za toolbar
         this.topPanel = new JPanel();
-       topPanel.add(new JLabel("Akcije za promenu slotova ->"));
-        this.add(topPanel, BorderLayout.NORTH);
+       //topPanel.add(new JLabel("Akcije za promenu slotova ->"));
+        this.add(topPanel, BorderLayout.EAST);
 
         autor.setText("Autor: " + prezentacija.getAutor());
         this.add(autor, BorderLayout.SOUTH);
@@ -60,7 +60,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         jToolBar.add(actionManager.getBojaA());
         jToolBar.add(actionManager.getVelicinaStrokeA());
         topPanel.add(jToolBar);
-        //this.add(topPanel, BorderLayout.NORTH);
+    
 
 
     }
