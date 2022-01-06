@@ -17,6 +17,8 @@ public class ActionManager {
     VelicinaStrokeA velicinaStrokeA;
     EditSlajdAction editSlajdAction;
     StartState startState;
+    RedoAction redoAction;
+    UndoAction undoAction;
 
     public ActionManager() {
         this.newAction = new NewAction();
@@ -33,6 +35,8 @@ public class ActionManager {
         this.velicinaStrokeA = new VelicinaStrokeA();
         this.editSlajdAction = new EditSlajdAction();
         this.startState = new StartState();
+        this.redoAction = new RedoAction();
+        this.undoAction = new UndoAction();
     }
 
     public BrisanjeCvoraAction getBrisanjeCvoraAction() {
@@ -105,5 +109,11 @@ public class ActionManager {
 
     public StartState getStartState() {
         return startState;
+    }
+    public RedoAction getRedoAction() {
+        return redoAction;
+    }
+    public UndoAction getUndoAction() {
+        return undoAction;
     }
 }

@@ -15,7 +15,7 @@ public class SlideEditorState implements State {
         pvv.getCentar().revalidate();
         pvv.getCentar().repaint();
         for(SlajdView s : pvv.getSlajdViews()){
-            
+
             SlajdView sv = new SlajdView(s.getSlajd(),pvv.getPr());
             sv.setMaximumSize(new Dimension(130,70));
             sv.setMinimumSize(new Dimension(130,70));

@@ -3,6 +3,7 @@ package gui;
 import Actions.ActionManager;
 import Cvorovi.WorkspaceModel;
 import Observer.ISubscriber;
+import commands.CommandManager;
 import factory.FactoryError;
 import factory.MyError;
 import state.StateManager;
@@ -15,6 +16,7 @@ public class MainWindow extends JFrame implements ISubscriber {
     private static MainWindow instance = null;
     private ActionManager actionManager = new ActionManager();
     private StateManager stateManager = new StateManager();
+    private CommandManager commandManager = new CommandManager();
     private WorkspaceTree workspaceTree;
     private MojTabbedPane mojTabbedPane;
     private JPanel desni = new JPanel();
@@ -60,12 +62,14 @@ public class MainWindow extends JFrame implements ISubscriber {
 
         JToolBar jToolBar = new JToolBar();
         jToolBar.add(actionManager.getNewAction());
-        jToolBar.add(actionManager.getDodajCvorAkcija());
+        //jToolBar.add(actionManager.getDodajCvorAkcija());
         jToolBar.add(actionManager.getDodajCvorAkcijaFactory());
         jToolBar.add(actionManager.getBrisanjeCvoraAction());
         jToolBar.add(actionManager.getRenameAutorAction());
         jToolBar.add(actionManager.getNovaSlikaAction());
         jToolBar.add(actionManager.getInfoAction());
+        jToolBar.add(actionManager.getUndoAction());
+        jToolBar.add(actionManager.getRedoAction());
 
         this.getContentPane().add(jToolBar,BorderLayout.NORTH);
 
@@ -111,6 +115,7 @@ public class MainWindow extends JFrame implements ISubscriber {
     public StateManager getStateManager() {
         return stateManager;
     }
+    public CommandManager getCommandManager(){return commandManager;}
 
     public JPanel getDesni() {
         return desni;
