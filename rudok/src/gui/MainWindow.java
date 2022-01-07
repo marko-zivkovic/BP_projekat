@@ -55,8 +55,9 @@ public class MainWindow extends JFrame implements ISubscriber {
         jMenuBar.add(file);
         jMenuBar.add(help);
         //file.add(novi);
-        file.add(actionManager.getNewAction());
         file.add(actionManager.getInfoAction());
+        file.add(actionManager.getSaveAction());
+        file.add(actionManager.getOpenAction());
         help.add(edit);
         this.setJMenuBar(jMenuBar);
 

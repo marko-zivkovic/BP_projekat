@@ -19,6 +19,8 @@ public class ActionManager {
     StartState startState;
     RedoAction redoAction;
     UndoAction undoAction;
+    SaveAction saveAction;
+    OpenAction openAction;
 
     public ActionManager() {
         this.newAction = new NewAction();
@@ -37,6 +39,8 @@ public class ActionManager {
         this.startState = new StartState();
         this.redoAction = new RedoAction();
         this.undoAction = new UndoAction();
+        this.saveAction = new SaveAction();
+        this.openAction = new OpenAction();
     }
 
     public BrisanjeCvoraAction getBrisanjeCvoraAction() {
@@ -116,4 +120,6 @@ public class ActionManager {
     public UndoAction getUndoAction() {
         return undoAction;
     }
+    public SaveAction getSaveAction() {return saveAction;}
+    public OpenAction getOpenAction() {return openAction;}
 }

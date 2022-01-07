@@ -4,16 +4,17 @@ import Observer.IPublisher;
 import Observer.ISubscriber;
 
 import javax.swing.tree.TreeNode;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-public class Slajd implements TreeNode, IPublisher {
+public class Slajd implements TreeNode, IPublisher, Serializable {
     private String name;
     private Integer br;
     //////////////
     private ArrayList<Slot> slotovi = new ArrayList<Slot>();
-    List<ISubscriber> subscribers;
+    private transient List<ISubscriber> subscribers;
 
 
     public Slajd (String Name) {name=Name;}

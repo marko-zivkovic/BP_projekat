@@ -1,5 +1,7 @@
 package Cvorovi;
 
+import gui.MainWindow;
+
 import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -54,6 +56,7 @@ public class Workspace implements TreeNode{
         }
         public void brisanje (Projekat pro){
             projects.remove(pro);
+            MainWindow.getInstance().getMojTabbedPane().removeAll();
         }
 
         public void addProject(Projekat project){

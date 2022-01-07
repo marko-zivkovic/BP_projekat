@@ -6,16 +6,17 @@ import Observer.IPublisher;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-public class Prezentacija implements TreeNode, IPublisher {
+public class Prezentacija implements TreeNode, IPublisher, Serializable {
     private ArrayList<Slajd> slajdovi = new ArrayList<Slajd>();
     private String name;
     private String autor;
     private String slikatema;
-    List<ISubscriber> subscribers;
+    private transient List<ISubscriber> subscribers;
 
 
     public Prezentacija(String projectName) {
@@ -38,28 +39,27 @@ public class Prezentacija implements TreeNode, IPublisher {
     public void brisanje (Slajd pro){
         slajdovi.remove(pro);
         notifySubscribers(pro);
+        notifySubscribers("promenapro");
     }
 
     public String getName() {
         return name;
     }
-
     public String getAutor() {
         return autor;
     }
-
     public void setAutor(String autor) {
         this.autor = autor;
         this.notifySubscribers(this);
+        this.notifySubscribers("promenapro");
     }
-
     public String getSlikatema() {
         return slikatema;
     }
-
     public void setSlikatema(String slikatema) {
         this.slikatema = slikatema;
         notifySubscribers("promena");
+        notifySubscribers("promenapro");
     }
 
     public void addSlajd(Slajd slajd){
@@ -68,6 +68,7 @@ public class Prezentacija implements TreeNode, IPublisher {
         slajd.setBr(slajdovi.size());
 
         this.notifySubscribers(slajd);
+        this.notifySubscribers("promenapro");
 
     }
 

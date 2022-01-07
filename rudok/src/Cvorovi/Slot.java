@@ -2,8 +2,9 @@ package Cvorovi;
 
 import javax.swing.text.Position;
 import java.awt.*;
+import java.io.Serializable;
 
-public class Slot {
+public class Slot implements Serializable {
 
     private Stroke stroke;
     private String name;
