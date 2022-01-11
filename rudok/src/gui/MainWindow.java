@@ -69,8 +69,10 @@ public class MainWindow extends JFrame implements ISubscriber {
         jToolBar.add(actionManager.getRenameAutorAction());
         jToolBar.add(actionManager.getNovaSlikaAction());
         jToolBar.add(actionManager.getInfoAction());
+        jToolBar.add(actionManager.getDeljenjePreAkcija());
         jToolBar.add(actionManager.getUndoAction());
         jToolBar.add(actionManager.getRedoAction());
+
 
         this.getContentPane().add(jToolBar,BorderLayout.NORTH);
 
