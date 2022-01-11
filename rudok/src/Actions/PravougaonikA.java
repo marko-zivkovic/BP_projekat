@@ -1,5 +1,9 @@
 package Actions;
 
+import gui.MainWindow;
+import gui.PrezentacijaView;
+import gui.SlajdView;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +21,10 @@ public class PravougaonikA extends AbstractMyAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("pravougaonik");
+        PrezentacijaView pv = (PrezentacijaView) MainWindow.getInstance().getMojTabbedPane().getSelectedComponent();
+        for(SlajdView sv: pv.getSlajdViews()){
+            sv.setFlag(true);
+        }
     }
 
 

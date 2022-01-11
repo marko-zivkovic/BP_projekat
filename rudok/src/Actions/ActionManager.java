@@ -22,6 +22,7 @@ public class ActionManager {
     SaveAction saveAction;
     OpenAction openAction;
     DeljenjePreAkcija deljenjePreAkcija;
+    KursorAkcija kursorAkcija;
 
     public ActionManager() {
         this.newAction = new NewAction();
@@ -43,6 +44,7 @@ public class ActionManager {
         this.saveAction = new SaveAction();
         this.openAction = new OpenAction();
         this.deljenjePreAkcija = new DeljenjePreAkcija();
+        this.kursorAkcija = new KursorAkcija();
     }
 
     public BrisanjeCvoraAction getBrisanjeCvoraAction() {
@@ -125,4 +127,5 @@ public class ActionManager {
     public SaveAction getSaveAction() {return saveAction;}
     public OpenAction getOpenAction() {return openAction;}
     public DeljenjePreAkcija getDeljenjePreAkcija() {return deljenjePreAkcija;}
+    public KursorAkcija getKursorAkcija() {return kursorAkcija;}
 }

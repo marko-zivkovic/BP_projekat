@@ -35,8 +35,8 @@ public class StateManager {
     public void setSlideShow() {
         this.currentState = slideShowState;
     }
-    public void setSlotState() {
-        this.currentState = slotState;
+    public SlotState getSlotState() {
+        return slotState;
     }
 
 }

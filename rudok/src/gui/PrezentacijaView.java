@@ -63,6 +63,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
 
         this.setBackground(Color.green);
 
+        jToolBar.add(actionManager.getKursorAkcija());
         jToolBar.add(actionManager.getPravougaonikA());
         jToolBar.add(actionManager.getBojaA());
         jToolBar.add(actionManager.getVelicinaStrokeA());

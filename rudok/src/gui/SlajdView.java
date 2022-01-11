@@ -4,6 +4,8 @@ import Cvorovi.Prezentacija;
 import Cvorovi.Slajd;
 import Cvorovi.Slot;
 import Observer.ISubscriber;
+import state.StateManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -22,6 +24,8 @@ public class SlajdView extends JPanel implements ISubscriber {
     Integer br;
     Paint fill;
     BasicStroke bs;
+    boolean flag = false;
+    private StateManager stateManager;
 
     public SlajdView(Slajd ss, Prezentacija prez) {
 
@@ -30,6 +34,7 @@ public class SlajdView extends JPanel implements ISubscriber {
         this.br=ss.getBr();
         fill = new Color(255,255,255);
         bs = new BasicStroke(4);
+        this.stateManager = new StateManager();
 
         prezz.addSubscriber(this);
         slajd.addSubscriber(this);
@@ -107,16 +112,13 @@ public class SlajdView extends JPanel implements ISubscriber {
     }
 
 
-
-
-
     //MOUSEEVENT
 
         private class MouseController extends MouseAdapter {
 
             public void mousePressed(MouseEvent e) {
 
-                if (e.getButton()==MouseEvent.BUTTON1){
+                if (e.getButton()==MouseEvent.BUTTON1 && flag == true){
                     Point position = e.getPoint();
                     int x = position.x;
                     int y = position.y;
@@ -142,5 +144,9 @@ public class SlajdView extends JPanel implements ISubscriber {
 
     public Slajd getSlajd() {
         return slajd;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }

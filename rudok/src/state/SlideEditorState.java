@@ -5,6 +5,7 @@ import gui.SlajdView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class SlideEditorState implements State {
 
@@ -29,6 +30,11 @@ public class SlideEditorState implements State {
         }
         pvv.getCentar().revalidate();
         pvv.getCentar().repaint();
+
+    }
+
+    @Override
+    public void MousePressed(MouseEvent e) {
 
     }
 }
