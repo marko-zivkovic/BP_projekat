@@ -1,6 +1,7 @@
 package gui;
 
 import Actions.ActionManager;
+import Cvorovi.SlotComponent;
 import Cvorovi.WorkspaceModel;
 import Observer.ISubscriber;
 import commands.CommandManager;
@@ -19,6 +20,7 @@ public class MainWindow extends JFrame implements ISubscriber {
     private CommandManager commandManager = new CommandManager();
     private WorkspaceTree workspaceTree;
     private MojTabbedPane mojTabbedPane;
+    private SlotComponent slotComponent;
     private JPanel desni = new JPanel();
     private FactoryError ferror;
 
@@ -44,6 +46,7 @@ public class MainWindow extends JFrame implements ISubscriber {
         setLocationRelativeTo(null);
         ferror = FactoryError.getInstance();
         ferror.addSubscriber(this);
+        slotComponent = SlotComponent.getInstance();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -122,6 +125,10 @@ public class MainWindow extends JFrame implements ISubscriber {
 
     public JPanel getDesni() {
         return desni;
+    }
+
+    public SlotComponent getSlotComponent() {
+        return slotComponent;
     }
 
     @Override
