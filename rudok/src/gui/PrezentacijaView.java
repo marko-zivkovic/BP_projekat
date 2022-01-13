@@ -68,6 +68,7 @@ public class PrezentacijaView extends JPanel implements ISubscriber {
         jToolBar.add(actionManager.getBojaA());
         jToolBar.add(actionManager.getVelicinaStrokeA());
         jToolBar.add(actionManager.getEditovanjeSlotaAkcija());
+        jToolBar.add(actionManager.getEditovanjeSlotaSlikaAkcija());
         topPanel.add(jToolBar);
         jj.add(actionManager.getSlideShowActuin());
         jj.add(actionManager.getEditSlajdAction());

@@ -52,15 +52,16 @@ public class SlajdView extends JPanel implements ISubscriber {
     ////////////imagepanel
     class ImagePanel extends JPanel {
 
-        //private String slika;
+        private String slika;
         private Image img;
 
         public ImagePanel(String imag) {
+
             this.img = new ImageIcon(getClass().getResource(imag)).getImage();
         }
 
         public void setSlika(String slika) {
-            //this.slika = slika;
+            this.slika = slika;
             this.img = new ImageIcon(getClass().getResource(slika)).getImage();
             this.repaint();
         }

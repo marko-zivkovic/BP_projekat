@@ -15,6 +15,7 @@ public class Projekat implements TreeNode, ISubscriber, Serializable {
     private String name;
     private transient boolean promena;
     private File projekatFile;
+    private boolean kliknut = false;
 
     public Projekat(String projectName) {
         this.name=projectName;
@@ -115,5 +116,12 @@ public class Projekat implements TreeNode, ISubscriber, Serializable {
 
     public void setProjekatFile(File projekatFile) {
         this.projekatFile = projekatFile;
+    }
+
+    public boolean isKliknut() {
+        return kliknut;
+    }
+    public void setKliknut(boolean kliknut) {
+        this.kliknut = kliknut;
     }
 }

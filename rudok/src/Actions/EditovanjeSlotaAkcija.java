@@ -1,14 +1,17 @@
 package Actions;
 
+import gui.MainWindow;
 import javafx.scene.layout.HBox;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class EditovanjeSlotaAkcija extends AbstractMyAction{
     public EditovanjeSlotaAkcija (){
+
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
         putValue(SMALL_ICON, loadIcon("slike/color.png"));
@@ -37,6 +40,13 @@ public class EditovanjeSlotaAkcija extends AbstractMyAction{
         prozor.getContentPane().add(text,BorderLayout.CENTER);
         prozor.getContentPane().add(dugmici,BorderLayout.NORTH);
 
+        save1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String tekst = text.getText();
+                MainWindow.getInstance().getSlotComponent().setText(tekst);
+            }
+        });
 
 
     }

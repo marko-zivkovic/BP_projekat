@@ -10,6 +10,7 @@ public class SlotView {
     private Slot slot;
     private Shape shape;
     private Paint boja;
+    private SlotHendler slotHendler;
 
     public SlotView (Slot s){
         this.slot = s;

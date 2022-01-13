@@ -44,10 +44,12 @@ public class WorkspaceTreeEditor extends DefaultTreeCellEditor implements Action
                 return true;
             }
             if (((MouseEvent)arg0).getClickCount()==2){
-                Object p = MainWindow.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
 
-                if(p instanceof Projekat){
+                Object p = MainWindow.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+                ///////////////
+                if(p instanceof Projekat && !((Projekat) p).isKliknut()){
                     MojTabbedPane mtp = MainWindow.getInstance().getMojTabbedPane();
+                    ((Projekat) p).setKliknut(true);
                     for(Prezentacija pr : ((Projekat) p).getPrezentacije()){
 
                         PrezentacijaView pv = new PrezentacijaView(pr);
@@ -60,6 +62,22 @@ public class WorkspaceTreeEditor extends DefaultTreeCellEditor implements Action
 
                     }
 
+                }
+                ///////////////
+                if(p instanceof Projekat && ((Projekat) p).isKliknut()){
+                    MojTabbedPane mtp = MainWindow.getInstance().getMojTabbedPane();
+                    mtp.removeAll();
+                    for(Prezentacija pr : ((Projekat) p).getPrezentacije()){
+
+                        PrezentacijaView pv = new PrezentacijaView(pr);
+                        addMyTabToTabbedPane(pr.getName(), pv,mtp);
+
+                        for(Slajd s:pr.getSlajdovi()){
+                            SlajdView sv = new SlajdView(s,pr);
+                            pv.addSlajdView(sv);
+                        }
+
+                    }
                 }
             }
         }

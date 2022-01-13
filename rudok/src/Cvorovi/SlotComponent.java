@@ -11,6 +11,7 @@ public class SlotComponent {
 
     private SlotComponent() {}
 
+
     public static SlotComponent getInstance(){
         if(instance == null){
             instance = new SlotComponent();

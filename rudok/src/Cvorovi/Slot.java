@@ -16,6 +16,7 @@ public class Slot implements Serializable {
     protected Dimension size;
     protected Point position;
     private Paint color;
+    private SlotComponent slotComponent;
 
     public Slot (Stroke st, int x, int y, int h, int w,Paint fill)
     {
@@ -29,6 +30,7 @@ public class Slot implements Serializable {
         size = new Dimension(w,h);
         position = new Point(x,y);
         this.name = "Slot";
+        slotComponent = SlotComponent.getInstance();
 
     }
 
